@@ -1,0 +1,11 @@
+E:\VS2019项目库\201817380120杨磊\T2-1\bin\Debug\T2-1.exe.config
+E:\VS2019项目库\201817380120杨磊\T2-1\bin\Debug\T2-1.exe
+E:\VS2019项目库\201817380120杨磊\T2-1\bin\Debug\T2-1.pdb
+E:\VS2019项目库\201817380120杨磊\T2-1\bin\Debug\EntityFramework.dll
+E:\VS2019项目库\201817380120杨磊\T2-1\bin\Debug\EntityFramework.SqlServer.dll
+E:\VS2019项目库\201817380120杨磊\T2-1\bin\Debug\EntityFramework.xml
+E:\VS2019项目库\201817380120杨磊\T2-1\bin\Debug\EntityFramework.SqlServer.xml
+E:\VS2019项目库\201817380120杨磊\T2-1\obj\Debug\T2-1.csprojAssemblyReference.cache
+E:\VS2019项目库\201817380120杨磊\T2-1\obj\Debug\T2-1.csproj.CopyComplete
+E:\VS2019项目库\201817380120杨磊\T2-1\obj\Debug\T2-1.exe
+E:\VS2019项目库\201817380120杨磊\T2-1\obj\Debug\T2-1.pdb

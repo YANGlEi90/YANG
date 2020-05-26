@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "MyAnswerDetail";
+    Layout = "~/Views/Shared/_LayoutExam.cshtml";
+  
+}
+
+
+
+@using Account.Models;
+@{
+
+    Student stu = Session["stu"] as Student;
+    Paper paper = ViewBag.paper;
+    List<Topic> topics = ViewBag.topic;
+}
+<h2>在线考试</h2>
+<table>
+    <tr>
+        <td>
+            <h4>试卷描述</h4><hr />
+            试卷名称: @paper.PaperName <br />
+            试卷介绍: @paper.PaperExplain<br />
+            试卷时长: @paper.PaperTime (分钟)<br />
+        </td>
+        <td>
+            <h4>考生信息</h4><hr />
+            学生姓名: @stu.StuName <br />
+            学生班级: @stu.StuGrade<br />
+            交卷时间： <br />
+        </td>
+    </tr>
+</table>
+
+<fieldset>
+    <legend>试卷答题内容</legend>
+    <ul>
+        @foreach (var item in topics)
+        {
+            <li>
+                <span style="font-weight:bold"> @item.TopicExplain</span> ( 25 分)
+                <ul>
+                    <li>A. @item.TopicA </li>
+                    <li>B. @item.TopicB</li>
+                    <li>C. @item.TopicC</li>
+                    <li>D. @item.TopicD</li>
+                    <li><span style="color:blue;">您的答案是：</span></li>
+                </ul>
+            </li>
+        }
+
+    </ul>
+
+    <div style="font-size:30px;color:red;padding:10px 50px">
+        <a href="/Answers/BeginAnswer?PaperID=1&amp;AnswerID=8">继续答题</a>
+    </div>
+</fieldset>
+
+

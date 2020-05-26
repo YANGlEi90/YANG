@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Account.Models.Paper>
+@using Account.Models;
+
+@{
+    ViewBag.Title = "IndexStu";
+    Layout = "~/Views/Shared/_LayoutExam.cshtml";
+
+    Student stu=Session["stu"] as Student;
+}
+
+<h2>试卷列表</h2>
+
+<p>
+   说明：一旦开始答题，那么标识考试正式开始，无法再次点击考试，
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PaperName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaperExplain)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaperTime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaperName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaperExplain)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaperTime)
+        </td>
+        <td>
+
+            @{ 
+                //通过导航属性去查找该学生是否已经作答
+                List<Answer> answers = item.Answer.Where(p => p.StuID == stu.StuID && p.PaperID==item.PaperID).ToList();
+                //已经作答
+                if (answers.Count>0)
+                {
+                    <span>已做答</span>
+                }
+                else
+                {
+                    <a href="/Answer/AnswerDetail/?PaperID=@item.PaperID&StuID=@stu.StuID">开始答题</a>
+                }
+            }
+        
+        </td>
+    </tr>
+}
+
+</table>

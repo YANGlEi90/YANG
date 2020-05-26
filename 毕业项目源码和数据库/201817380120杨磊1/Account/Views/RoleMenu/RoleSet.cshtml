@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "RoleSet";
+}
+
+
+
+@using Account.Models;
+@{
+    Account.Models.Roles role = ViewBag.role;
+    List<R_Role_Menus> roleMenus = ViewBag.roleMenus;
+    List<Menus> menu = ViewBag.menu;
+
+}
+
+<h2>RoleSet---@role.Name 角色的设置</h2>
+
+
+@using (Html.BeginForm("RoleSet", "RoleMenu", new { @class = "form-horizontal" }))
+{
+
+    foreach (var item in menu)
+    {
+        var check = false;
+        foreach (var item2 in roleMenus)
+        {
+            if (item.ID == item2.MenuID)
+            {
+                check = true;
+            }
+
+        }
+        <input type="checkbox" value="@item.ID" checked="@check" name="menu" id="menu" />
+        @item.Name
+        <br />
+    }
+
+    <input type="hidden" name="menuid" value="@role.ID" />
+    <input type="submit" value="提交" class="btn btn-primary" />
+}

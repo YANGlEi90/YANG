@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ncovDBModelStoreContainer" CdmEntityContainer="ncovDBEntities">
+    <EntitySetMapping Name="tbDetail">
+      <EntityTypeMapping TypeName="ncovDBModel.tbDetail">
+        <MappingFragment StoreEntitySet="tbDetail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="stuID" ColumnName="stuID" />
+          <ScalarProperty Name="TeaID" ColumnName="TeaID" />
+          <ScalarProperty Name="fillTime" ColumnName="fillTime" />
+          <ScalarProperty Name="isCough" ColumnName="isCough" />
+          <ScalarProperty Name="isFever" ColumnName="isFever" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbStu">
+      <EntityTypeMapping TypeName="ncovDBModel.tbStu">
+        <MappingFragment StoreEntitySet="tbStu">
+          <ScalarProperty Name="stuID" ColumnName="stuID" />
+          <ScalarProperty Name="stuName" ColumnName="stuName" />
+          <ScalarProperty Name="stuAddress" ColumnName="stuAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbTea">
+      <EntityTypeMapping TypeName="ncovDBModel.tbTea">
+        <MappingFragment StoreEntitySet="tbTea">
+          <ScalarProperty Name="TeaID" ColumnName="TeaID" />
+          <ScalarProperty Name="TeaName" ColumnName="TeaName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

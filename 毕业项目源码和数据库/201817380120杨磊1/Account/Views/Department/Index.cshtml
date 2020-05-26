@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@using Account.Models;
+@model List<Departments>
+
+<ul class="breadcrumb">
+    <li><a href="">首页</a></li>
+    <li class="active"><a href="">部门管理</a></li>
+</ul>
+
+<h2>Department--部门列表</h2>
+
+<div class="row">
+
+    <div class="col-lg-8">
+        <form method="post" action="Add" class="form-inline">
+            <label for="deparment">请输入:</label>
+            <input type="text" name="Name" class="form-control" placeholder="请输入部门名称" />
+            <input type="text" name="Remark" class="form-control" placeholder="请输入备注" />
+            <input type="submit" value="添加" class="btn btn-primary" />
+        </form>
+    </div>
+
+    <div class="col-lg-4">
+        <form method="post" action="" class="form-inline">
+            <label for="deparment">部门名称:</label>
+            <input type="text" name="Name" id="Name" value="@ViewBag.name" class="form-control" />
+            <input type="submit" value="搜索" class="btn btn-primary" />
+        </form>
+    </div>
+
+</div>
+
+<br />
+
+<table class="table table-bordered table-condensed table-hover">
+    <thead>
+        <tr>
+            <th>编号</th>
+            <th>名称</th>
+            <th>备注</th>
+            <th>该部门人员</th>
+            <th>该部门人数</th>
+            <th>修改</th>
+            <th>删除</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.Name</td>
+                <td>@item.Remark</td>
+                <td>
+                    @foreach (var item1 in item.UserInfos)
+                    {
+                        @item1.Name<br />
+                    }
+                </td>
+                <td>@item.UserInfos.Count()</td>
+                <td><a href="/Department/DepartmentsUpdate/@item.ID">修改</a></td>
+                <td><a href="/Department/DepartmentsDelete?DepartmentID=@item.ID">删除</td>
+            </tr>
+        }
+    </tbody>
+</table>

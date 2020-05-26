@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "MyAnswer";
+    Layout = "~/Views/Shared/_LayoutExam.cshtml";
+}
+
+@using Account.Models;
+@model PagedList.IPagedList<Account.Models.Answer>
+@{
+    List<Answer> answer = ViewBag.answer;
+    Student stu = Session["stu"] as Student;
+}
+
+<h2>我的考试 </h2>
+<table class="table">
+    <tr>
+        <th>学生姓名</th>
+        <th>试卷</th>
+        <th>批卷</th>
+        <th>分数</th>
+        <th>操作</th>
+    </tr>
+
+    @foreach (var item in answer)
+    {
+        <tr>
+            <td>@stu.StuName</td>
+            <td>@item.Paper.PaperName</td>
+            <td>@item.AnswerState</td>
+            <td> 0</td>
+            <td>
+                <a href="/Answer/MyAnswerDetail/@item.PaperID">查看详细</a>
+                <a href="/Answers/BeginAnswer?PaperID=1&amp;AnswerID=8">继续答题</a>
+            </td>
+        </tr>
+    }
+</table>
+
+
+
+
+

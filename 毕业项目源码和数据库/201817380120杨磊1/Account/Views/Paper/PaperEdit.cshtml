@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "PaperEdit";
+    Layout = "~/Views/Shared/_LayoutExam.cshtml";
+}
+
+@using Account.Models;
+@{ 
+    Paper paper = ViewBag.paper;
+}
+<h2>修改试卷</h2>
+
+<form action="/Paper/PaperEdit" method="post">
+    <input name="__RequestVerificationToken" type="hidden" value="fs9Z1m0-lY_2OBeo21oLNij2-_Vy7Pquhcl01vZnd_6I71ByR9fdVp_dpviLn7AqR68reO4dmigIM6mwnhw8Dhxhb8VX2Jp_l7yWjbY1xQU1" />    <div class="form-horizontal">
+        <h4>试卷信息</h4>
+        <hr />
+
+        <input data-val="true" data-val-number="字段 PaperID 必须是一个数字。" data-val-required="PaperID 字段是必需的。" id="PaperID" name="PaperID" type="hidden" value="@paper.PaperID" />
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="PaperName">试卷名</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" data-val-required="试卷名是必填项" id="PaperName" name="PaperName" type="text" value="@paper.PaperName" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="PaperName" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="PaperExplain">试卷说明</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" data-val-required="试卷说明是必填项" id="PaperExplain" name="PaperExplain" type="text" value="@paper.PaperExplain" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="PaperExplain" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="PaperTime">试卷时长</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" data-val-number="字段 试卷时长 必须是一个数字。" data-val-required="试卷时长是必填项" id="PaperTime" name="PaperTime" type="number" value="@paper.PaperTime" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="PaperTime" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value=" 保存 " class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+<div>
+    <a href="/Paper/Index">返回试卷列表</a>
+</div>
+

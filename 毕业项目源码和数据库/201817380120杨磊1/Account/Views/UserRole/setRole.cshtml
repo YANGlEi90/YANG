@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "setRole";
+}
+
+@*-----------------------面包屑导航-----------------*@
+<br />
+<ul class="breadcrumb">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">用户管理</a></li>
+    <li class="active">设置角色</li>
+</ul>
+
+
+
+@using Account.Models
+@{
+    UserInfos user = ViewBag.User;
+    List<R_User_Roles> UserRole = ViewBag.UserRole;
+    List<Account.Models.Roles> Role = ViewBag.role;
+
+}
+
+<h2>正在为 @user.Name 设置角色</h2>
+
+<form action="" method="post">
+
+   @* ---角色表----*@
+
+    @foreach (var item in Role)
+    {
+        var check = false;
+        foreach (var item2 in UserRole)             /*遍历角色关系表*/
+        {
+            if (item2.RoleID == item.ID)
+            {
+                check = true;
+                break;
+            }
+
+        }
+        <input type="checkbox" value="@item.ID" checked="@check" name="roles" id="roles" />
+        @item.Name
+        <br />
+    }
+    
+    <input type="hidden" name="userid" value="@user.ID" />
+    <input type="submit" value="提交" class="btn btn-primary" />
+</form>
+
+

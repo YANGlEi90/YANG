@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutExam.cshtml";
+}
+
+
+ @*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
+
+
+@model PagedList.IPagedList<Account.Models.Teacher>
+@using PagedList.Mvc;
+
+    <div id="all">
+        <!--页面内容部分-->
+        <h2>教师列表</h2>
+        <p>
+            <a href="/Teacher/Create">添加新老师</a>
+        </p>
+        <button id="remove">一键删除</button>
+        <table class="table">
+            <tr>
+                <th>
+                    <input type="checkbox" id="AllChecked" name="AllChecked" />全选
+                </th>
+                <th>
+                    姓名
+                </th>
+                <th>
+                    登录名
+                </th>
+                <th>
+                    密码
+                </th>
+                <th>
+                    电话
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>操作</th>
+            </tr>
+
+            @foreach (var item in ViewBag.list)
+            {
+                <tr>
+                    <td><input type="checkbox" value="@item.TeacherID" name="TeacherID" /></td>
+                    <td>@item.TeacherName </td>
+                    <td>@item.TeacherLoginName  </td>
+                    <td>@item.TeacherLoginPwd  </td>
+                    <td>@item.TeacherPhone  </td>
+                    <td>@item.TeacherEmail   </td>
+                    <td>
+                        <a href="/Teacher/TeaEdit/@item.TeacherID">编辑</a> |
+                        <a href="/Teacher/TeaDetails/@item.TeacherID">详情</a> |
+                        <a href="/Teacher/TeaDelete/@item.TeacherID">删除</a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+<div>
+    @*分页主要代码*@
+    每页 @Model.PageSize 条记录，共 @Model.PageCount 页，当前第 @Model.PageNumber 页
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>
+@section scripts{
+    <script>
+        //全选
+        $(function () {
+            $("#AllChecked").click(function () {
+                 if ($(this).is(":checked")){
+                     $("[name='TeacherID']").each(function () {
+                         $(this).prop("checked", true);
+                    })
+                    }
+                else{
+                    $("[name='TeacherID']").each(function () {
+                        $(this).prop("checked", false);
+                    })
+                    }
+            })  
+        })
+        //取消单个从而取消全选
+        $("[name='TeacherID'").click(function () {
+            var checkedlength = $("[name='TeacherID']:checked").length;
+            var Alllength = $("[name='TeacherID']").length;
+            if (checkedlength == Alllength) {
+                $("#AllChecked").prop("checked", true);
+            } else {
+                $("#AllChecked").prop("checked", false);
+            }
+        })
+        //批量删除
+        $("#remove").click(function () {
+        var ids = new Array();//创建一个数组
+        $("input:checkbox:gt(0):checked").each(function () {
+            var id = $(this).val();
+            ids += id + ',';
+        });
+        console.log(ids)
+        var msg = "确定要删除吗？"
+        if (confirm(msg) == true) {
+ 
+            //异步访问批量删除方法， 把数组传入controller层
+            $.ajax({
+                type: "post",
+                url: "/Teacher/Remove",
+                data: { ids: ids },
+                success: function (data) {
+                    if (data.state == 10000) {
+                        alert("删除成功!");
+                        location.reload();
+                    }
+                    else {
+                        alert("删除失败!");
+                    }
+                }
+ 
+            });
+        }
+        else { return false }
+    });
+
+    </script>
+    }

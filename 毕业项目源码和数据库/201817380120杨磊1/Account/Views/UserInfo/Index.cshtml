@@ -1,0 +1,174 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@*-----------------------面包屑导航-----------------*@
+<br />
+<ul class="breadcrumb">
+    <li><a href="#">首页</a></li>
+    <li class="active">用户管理</li>
+</ul>
+
+
+<h2>UserInfo--用户列表</h2>
+
+@using Account.Models
+@model List<UserInfos>
+
+@*---------------------------------------------顶部-----------------------------*@
+<div class="row">
+    <div class="col-lg-6">
+        @Html.ActionLink("新增", "Insert", "UserInfo", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("导入", "Add", "UserInfo", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("批量删除", "Add", "UserInfo", null, new { @class = "btn btn-primary" })
+    </div>
+    <div class="col-lg-6">
+        <form method="post" action="" class="form-inline">
+
+            <label class="label1" for="department">部门:</label>
+            <select name="departmentID" id="departmentID" class="form-control">
+                <option value="0">===请输入===</option>
+                @foreach (var item in ViewBag.dlist)
+                {
+                    if ((item.ID).Equals(ViewBag.departmentID))
+                    {
+                        <option value="@item.ID" selected>@item.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@item.ID">@item.Name</option>
+                    }
+
+                }
+            </select>
+
+            <label class="label2" for="department">姓名:</label>
+            <input type="text" name="Name" class="form-control" value="@ViewBag.name" placeholder="请输入姓名模糊查询" />
+
+            <input type="submit" value="查询" class="btn btn-primary" />
+        </form>
+
+    </div>
+</div>
+
+<br />
+
+@*---------------------------------------------内容区域显示-----------------------------*@
+<table class="table table-bordered table-condensed table-hover">
+    <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>部门</th>
+        <th>性别</th>
+        <th>账号</th>
+        <th>密码</th>
+        <th>照片</th>
+        <th>备注</th>
+        <th>账号拥有的角色</th>
+        <th>设置角色</th>
+        <th>删除</th>
+        <th>修改</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Name</td>
+            <td>@item.Departments.Name</td>                @*一对一关系直接主键取值*@
+            <td>
+                @if (item.Sex == true)
+                {
+                    @:男
+                }
+                else
+                {
+                    @:女
+                }
+            </td>
+            <td>@item.Account</td>
+            <td>@item.Pwd</td>
+            <td>
+             
+                <img src="~/images/users/@item.Photo" style="width:50px;height:50px" />
+
+            </td>
+            <td>@item.Remark</td>
+            <td>
+                @foreach (var item1 in item.R_User_Roles)
+                {
+                    @item1.Roles.Name <a href="/UserRole/Delete/@item1.ID" onclick="return confirm('你确定要删除嘛')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a><br /> @*一对多关系 循环拿值*@
+                }
+            </td>
+            <td><a href="/UserRole/setRole?UserID=@item.ID">设置角色</a></td>
+            <td><a href="/UserInfo/Remove?UserID=@item.ID">删除</a></td>
+            <td><a href="/UserInfo/Update/@item.ID">修改</a></td>
+            
+        </tr>
+
+
+    }
+</table>
+
+
+@*---------------------分页-----------------*@
+<div class="row">
+
+    <div class="col-lg-8 form-inline">
+        <label>总共 @ViewBag.totalCount</label>&nbsp;
+        <label>选择显示的行数：</label>
+        <select name="pageCount" id="pageCount" class="form-control " onchange="window.location = this.value;">
+            @{
+                int[] count = new int[] { 5, 10, 20, 30, 40 };
+            }
+            @foreach (var item in count)
+            {
+                //如果数组==页面数，则显示你所选择的，否则显示默认的
+                if (item.Equals(ViewBag.pageCount))
+                {
+                    <option selected value="/UserInfo/Index?departmentID=@ViewBag.departmentID&Name=@ViewBag.name&pageIndex=1&pageCount=@item">@item</option>
+                }
+                else
+                {
+                    <option value="/UserInfo/Index?departmentID=@ViewBag.departmentID&Name=@ViewBag.name&pageIndex=1&pageCount=@item">@item</option>
+                }
+
+            }
+        </select>
+    </div>
+
+    <div class="col-lg-4">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                @*----首页----*@
+                <li class="page-item"><a class="page-link" href="/UserInfo/Index?departmentID=@ViewBag.departmentID&Name=@ViewBag.name&pageIndex=1&pageCount=@ViewBag.pageCount">首页</a></li>
+
+                @*-------上一页---，如果当前页面>1 则可以上一页，否则禁用上一页按钮---*@
+                @if (ViewBag.pageIndex > 1)
+                {
+                    <li class="page-item"><a href="/UserInfo/Index?departmentID=@ViewBag.departmentID&Name=@ViewBag.name&pageIndex=@(ViewBag.pageIndex-1 )&pageCount=@ViewBag.pageCount">上一页</a></li>
+                }
+                else
+                {
+                    <li class="page-item disabled"><a class="page-link" href="#">上一页</a></li>
+                }
+
+                @*-----------显示当前页面-----------*@
+                <li class="page-item "><a class="page-link" href="#">@ViewBag.pageIndex</a></li>
+
+                @*-------下一页---，如果当前页面<页面总数 则可以下一页，否则禁用下一页按钮---*@
+                @if (ViewBag.pageIndex < ViewBag.totalPage)
+                {
+                    <li class="page-item"><a class="page-link" href="/UserInfo/Index?departmentID=@ViewBag.departmentID&Name=@ViewBag.name&pageIndex=@(ViewBag.pageIndex+1)&pageCount=@ViewBag.pageCount">下一页</a></li>
+                }
+                else
+                {
+                    <li class="page-item disabled"><a class="page-link" href="#">下一页</a></li>
+                }
+
+                @*------------末页，当前页面==总页面数-------*@
+                <li class="page-item"><a class="page-link" href="/UserInfo/Index?departmentID=@ViewBag.departmentID&Name=@ViewBag.name&pageIndex=@ViewBag.totalPage&pageCount=@ViewBag.pageCount">末页</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

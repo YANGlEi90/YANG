@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>文件上传</h2>
+@using (Html.BeginForm("Index", "Resource", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <label>请上传文件：</label>
+    <input type="file" id="resourceFile" name="resourceFile" />
+    <input type="submit" value="提交" class="btn btn-success" />
+}
+
+
+@if(ViewBag.img !=null){
+    <img src="~/UploadFile/@ViewBag.img"/>
+}
+<font color="red">@ViewBag.Message</font>
+

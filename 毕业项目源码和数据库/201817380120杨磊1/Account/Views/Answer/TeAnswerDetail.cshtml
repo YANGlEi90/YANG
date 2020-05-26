@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "TeAnswerDetail";
+    Layout = "~/Views/Shared/_LayoutExam.cshtml";
+}
+
+@using Account.Models;
+@{ 
+    Answer answers = ViewBag.answers;
+    
+}
+<h2>审卷</h2>
+<table>
+    <tr>
+        <td>
+            <h4>试卷描述</h4><hr />
+            试卷名称: @answers.Paper.PaperName  <br />
+            试卷介绍: @answers.Paper.PaperExplain<br />
+            试卷时长: @answers.Paper.PaperTime (分钟)<br />
+        </td>
+        <td>
+            <h4>考生信息</h4><hr />
+            学生姓名: @answers.Student.StuName <br />
+            学生班级: @answers.Student.StuGrade<br />
+            交卷时间：@answers.SubmitTime <br />
+        </td>
+    </tr>
+</table>
+
+@{ 
+   int sumScore = 0;
+}
+<fieldset>
+    <legend>答题区</legend>
+    <ul>
+        @foreach (var item in answers.Paper.Topic)
+        {
+            
+            foreach (var item2 in item.Detail.Where(a=>a.AnswerID==answers.AnswerID))
+            {
+                <li>
+                    <span style="font-weight:bold"> @item.Paper.PaperName</span> @item.TopicScore
+                    <ul style="padding-left:30px;">
+                        <li>
+                            <span style="color:blue;">学生的答案是：@item2.DetailAnswer</span>
+                            @if (item2.DetailAnswer == item.TopicAnswer)
+                            {
+                                <span style="color:green">✔</span>
+
+                                sumScore += item.TopicScore;
+                            }
+                            else
+                            {
+                                <span style="color:red">✘</span>
+                            }
+
+                        </li>
+                        <li><span style="color:red;">正确答案是：@item.TopicAnswer</span></li>
+                    </ul>
+                </li>
+            }
+
+        }
+
+    </ul>
+    @if (answers.BatchTime == null)
+    {
+        <div style="font-size:30px;color:red;padding:10px 50px">
+            <a href="/Answer/Verify/?AnswerID=@answers.AnswerID&sumScore=@sumScore"> 提交审核 </a>
+        </div>
+    }
+    else
+    {
+        <div style="font-size:30px;color:red;padding:10px 50px">
+            <span> 分数：@answers.AnswerScore</span>
+        </div>
+    }
+
+</fieldset>
+
+

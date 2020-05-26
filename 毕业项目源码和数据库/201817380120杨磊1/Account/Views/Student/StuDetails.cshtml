@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "StuDetails";
+    Layout = "~/Views/Shared/_LayoutExam.cshtml";
+}
+
+
+@using Account.Models;
+@{ 
+    Student student = ViewBag.info;
+}
+
+<h2>学生详情</h2>
+
+<div>
+    <h4>学生信息</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            姓名
+        </dt>
+
+        <dd>
+           @student.StuName
+        </dd>
+
+        <dt>
+            登录名
+        </dt>
+
+        <dd>
+           @student.StuLoginName
+        </dd>
+
+        <dt>
+            密码
+        </dt>
+
+        <dd>
+           @student.StuLoginPwd
+        </dd>
+
+        <dt>
+            性别
+        </dt>
+
+        <dd>
+           @if (student.StuSex)
+           {
+               @:男
+           }
+           else
+           {
+               @:女
+           }
+        </dd>
+
+        <dt>
+            电话
+        </dt>
+
+        <dd>
+            @student.StuPhone
+        </dd>
+
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @student.StuEmail
+        </dd>
+
+        <dt>
+            班级
+        </dt>
+
+        <dd>
+            @student.StuGrade
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="/Student/StuEdit/@student.StuID">编辑</a>  |
+    <a href="/Student/Index">返回学生列表</a>
+</p>
+
+

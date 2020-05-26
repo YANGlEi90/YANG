@@ -1,0 +1,6 @@
+E:\VS2019项目库\201817380120杨磊\T3-1练习2\bin\Debug\T3-1练习2.exe.config
+E:\VS2019项目库\201817380120杨磊\T3-1练习2\bin\Debug\T3-1练习2.exe
+E:\VS2019项目库\201817380120杨磊\T3-1练习2\bin\Debug\T3-1练习2.pdb
+E:\VS2019项目库\201817380120杨磊\T3-1练习2\obj\Debug\T3-1练习2.csprojAssemblyReference.cache
+E:\VS2019项目库\201817380120杨磊\T3-1练习2\obj\Debug\T3-1练习2.exe
+E:\VS2019项目库\201817380120杨磊\T3-1练习2\obj\Debug\T3-1练习2.pdb

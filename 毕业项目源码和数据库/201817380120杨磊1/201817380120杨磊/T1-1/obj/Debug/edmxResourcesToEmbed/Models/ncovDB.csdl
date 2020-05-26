@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ncovDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tbDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="stuID" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="TeaID" Type="Int32" />
+    <Property Name="fillTime" Type="DateTime" Precision="3" />
+    <Property Name="isCough" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="isFever" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tbStu" Relationship="Self.FK__tbDetail__stuID__164452B1" FromRole="tbDetail" ToRole="tbStu" />
+    <NavigationProperty Name="tbTea" Relationship="Self.FK__tbDetail__TeaID__173876EA" FromRole="tbDetail" ToRole="tbTea" />
+  </EntityType>
+  <EntityType Name="tbStu">
+    <Key>
+      <PropertyRef Name="stuID" />
+    </Key>
+    <Property Name="stuID" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="stuName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="stuAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbDetail" Relationship="Self.FK__tbDetail__stuID__164452B1" FromRole="tbStu" ToRole="tbDetail" />
+  </EntityType>
+  <EntityType Name="tbTea">
+    <Key>
+      <PropertyRef Name="TeaID" />
+    </Key>
+    <Property Name="TeaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TeaName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tbDetail" Relationship="Self.FK__tbDetail__TeaID__173876EA" FromRole="tbTea" ToRole="tbDetail" />
+  </EntityType>
+  <Association Name="FK__tbDetail__stuID__164452B1">
+    <End Role="tbStu" Type="Self.tbStu" Multiplicity="0..1" />
+    <End Role="tbDetail" Type="Self.tbDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbStu">
+        <PropertyRef Name="stuID" />
+      </Principal>
+      <Dependent Role="tbDetail">
+        <PropertyRef Name="stuID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbDetail__TeaID__173876EA">
+    <End Role="tbTea" Type="Self.tbTea" Multiplicity="0..1" />
+    <End Role="tbDetail" Type="Self.tbDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbTea">
+        <PropertyRef Name="TeaID" />
+      </Principal>
+      <Dependent Role="tbDetail">
+        <PropertyRef Name="TeaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ncovDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="tbDetail" EntityType="Self.tbDetail" />
+    <EntitySet Name="tbStu" EntityType="Self.tbStu" />
+    <EntitySet Name="tbTea" EntityType="Self.tbTea" />
+    <AssociationSet Name="FK__tbDetail__stuID__164452B1" Association="Self.FK__tbDetail__stuID__164452B1">
+      <End Role="tbStu" EntitySet="tbStu" />
+      <End Role="tbDetail" EntitySet="tbDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbDetail__TeaID__173876EA" Association="Self.FK__tbDetail__TeaID__173876EA">
+      <End Role="tbTea" EntitySet="tbTea" />
+      <End Role="tbDetail" EntitySet="tbDetail" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

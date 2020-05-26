@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript">
+        var xmlHttpRequest;
+        function createXmlHttpRequest() {
+            if (window.ActiveXObject) {
+                //如果是IE浏览器，就如下创建xmlHttpRequest对象
+                 xmlHttpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+            } else {
+                xmlHttpRequest = new window.XMLHttpRequest();
+            }
+
+        }
+        //用来发送请求的
+        function sendRequest() {
+
+            //创建xmlHttpRequest对象
+            createXmlHttpRequest();
+            //onreadystatechange时间进行状态监控（根据监控的结果显示内容）
+            xmlHttpRequest.onreadystatechange = changeWrite;
+            //定义请求的方式、地址、是否异步
+            xmlHttpRequest.open("post","CarAjaxHttpHandler.ashx",true)
+            //发送请求
+            xmlHttpRequest.send(null);
+
+        }
+        function changeWrite() {
+            if (xmlHttpRequest.readyState == 4) {
+                if (xmlHttpRequest.status == 200) {
+                    document.getElementById("creditCards").innerHTML = xmlHttpRequest.responseText;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="creditCards" style="text-align:center">
+        <font color="red">这里显示表格内容</font>
+    </div>
+    <input type="button" value="请点击这里显示xml内容" onclick="sendRequest()" />
+</body>
+</html>

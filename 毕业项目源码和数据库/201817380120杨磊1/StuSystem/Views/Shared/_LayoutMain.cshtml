@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="https://localhost:44310/Content/style.css" rel="stylesheet" />
+</head>
+<body>
+    @*头部*@
+    <div id="container">
+        
+        @Html.Partial("_LayoutMain")
+        @*中部部*@
+        <div>
+            @RenderBody()
+        </div>
+
+        @*底部*@
+        <div id="foot">Copyright(c)2008-2010 FasionShopping时尚有限公司 鄂ICP备05009763号</div>
+    </div>
+</body>
+</html>

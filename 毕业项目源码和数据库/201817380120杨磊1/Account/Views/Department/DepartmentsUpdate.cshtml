@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "DepartmentsUpdate";
+}
+
+<h2>DepartmentsUpdate</h2>
+
+<ul class="breadcrumb">
+    <li><a href="">首页</a></li>
+    <li><a href="">部门管理</a></li>
+    <li class="active"><a href="">部门修改</a></li>
+</ul>
+<h2>部门修改</h2>
+@using Account.Models;
+@{
+    Departments dep = ViewBag.dep;
+}
+
+@using (Html.BeginForm("DepartmentsUpdate", "Department", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+
+    <div class="form-group">
+        <label class="control-label">名称：</label>
+        <input type="text" name="Name" value="@dep.Name" class="form-control" />
+
+    </div>
+    <div class="form-group">
+        <label>描述：</label>
+        <input type="text" name="Remark" value="@dep.Remark" class="form-control" />
+    </div>
+    <div>
+        <a href="javascript:history.go(-1)">返回</a>
+        <input type="submit" value="提交" class="btn btn-primary" />
+    </div>
+
+}

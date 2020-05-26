@@ -1,0 +1,6 @@
+E:\VS2019项目库\201817380120杨磊\T4-1聚合函数\bin\Debug\T4-1聚合函数.exe.config
+E:\VS2019项目库\201817380120杨磊\T4-1聚合函数\bin\Debug\T4-1聚合函数.exe
+E:\VS2019项目库\201817380120杨磊\T4-1聚合函数\bin\Debug\T4-1聚合函数.pdb
+E:\VS2019项目库\201817380120杨磊\T4-1聚合函数\obj\Debug\T4-1聚合函数.csprojAssemblyReference.cache
+E:\VS2019项目库\201817380120杨磊\T4-1聚合函数\obj\Debug\T4-1聚合函数.exe
+E:\VS2019项目库\201817380120杨磊\T4-1聚合函数\obj\Debug\T4-1聚合函数.pdb

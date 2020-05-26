@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@*========================================================【【【----老师控制器对应的视图----】】】】===========================================*@
+
+
+
+@*引用老师类所在的命名空间*@
+@*将我们传值过来的model参数转为List<Teacher>类型*@
+
+@using ExamDB.Models;
+@model List<Teacher>
+
+
+
+@*----js弹出对话框----*@
+@section scripts{
+    <script type="text/javascript">
+        alert("共找到" +@ViewBag.count);
+        var count = $("#count").text();
+      alert("共找到" +count);
+    </script>
+
+}
+
+<span id="count" style="display:none;">@ViewBag.count</span>
+
+<br />
+
+@*---------------模糊查询---------------------*@
+<form method="post" action="/Teacher/Index"> 
+    <p>姓名：<input type="text" name="teaName"/><input type="submit" value="搜索" /></p>
+</form>
+
+
+
+@*添加老师信息*@
+@Html.ActionLink("添加老师", "Add", "Teacher", new { @class = "btn btn-primary" })
+<h2>老师信息列表</h2>
+
+<hr />
+<table class="table">
+    <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>账号</th>
+        <th>电话</th>
+        <th>邮箱地址</th>
+        <th>操作</th>
+    </tr>
+    @foreach (var item in  ViewData["List"] as List<Teacher>)
+    {
+        <tr>
+            <td>@item.TeacherID</td>
+            <td>@item.TeacherName</td>
+            <td>@item.TeacherLoginName</td>
+            <td>@item.TeacherPhone</td>
+            <td>@item.TeacherEmail</td>
+            <td>
+
+                @*------修改-------*@
+                @Html.ActionLink("修改", "Edit", "Teacher", new { id = item.TeacherID }, new { @class = "btn btn-primary", target = "_black" })
+
+                @*-----------常规传参---------*@
+                <a href="/Teacher/ShowMessage?id=@item.TeacherID" class="btn btn-default">查看</a>
+                @*-----------路由器规则传参------------*@
+                <a href="/Teacher/deletes/@item.TeacherID" class="btn btn-danger" onclick="return confirm('你确定要删除 @item.TeacherName 的信息嘛')">删除</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+
+
+
+
+
+

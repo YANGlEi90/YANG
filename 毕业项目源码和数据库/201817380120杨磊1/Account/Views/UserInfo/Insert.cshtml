@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Insert";
+}
+
+<h2>Insert--添加一个用户信息</h2>
+
+@using (Html.BeginForm("Insert", "UserInfo", FormMethod.Post, new { @class = "form-horizontal" ,enctype = "multipart/form-data" }))
+{
+
+    <div class="form-group">
+        <label class="control-label">姓名:</label>
+        @Html.TextBox("Name", null, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">部门:</label>
+        @Html.DropDownList("DepartmentID", ViewBag.Department as List<SelectListItem>, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label for="Sex" class="control-label">性别:</label>
+        @Html.RadioButton("Sex", "true", isChecked: true)男
+        @Html.RadioButton("Sex", "false")女
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label">账号:</label>
+        @Html.TextBox("Account", null, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">角色:</label>
+
+        @foreach (var item in ViewBag.roles)
+        {
+            @*@Html.CheckBox("R_User_Roles", new { @class = "checkbox-inline " }) @item.Name*@
+            <input type="checkbox" value="@item.ID" name="roles" id="roles" /> @item.Name
+        }
+
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label">密码:</label>
+        @Html.Password("Pwd", null, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">图片:</label>
+        <input type="file" value="请选择图片" name="Photo" id="Photo"/>
+       
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">备注:</label>
+        @Html.TextArea("Remark", null, new { @class = "form-control" })
+    </div>
+
+
+    <div>
+        <a href="javascript:history.go(-1)">返回</a>
+        <input type="submit" value="保存" class="btn btn-primary" />
+    </div>
+}

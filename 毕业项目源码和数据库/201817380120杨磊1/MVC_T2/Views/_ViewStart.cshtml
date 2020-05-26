@@ -1,0 +1,44 @@
+﻿@{
+    Layout = null;
+}
+<h2>@DateTime.Now;</h2>
+
+
+@{
+    bool isOk = true;
+    if (isOk)
+    {
+        @:好，很好
+        @("好")
+    }
+    else
+    {
+        <h2>错，错的离谱</h2>
+    }
+}
+<hr />
+@{
+    var list = new List<string>() { "刘香明", "香明", "好哥" };
+    foreach (var item in list)
+    {
+        <li>@item</li>
+    }
+}
+<hr />
+@using MVC_T2.Models;
+@{
+    List<User> list2 = new List<User> {
+                new User{ Name="刘香明" , Age=20, Email="123456789"},
+                new User{ Name="香明" , Age=19, Email="123456789" },
+                new User{ Name="好哥" , Age=18, Email="123456789"}
+
+     };
+}
+@{
+    foreach (var item in list2)
+    {
+         <li>姓名： @item.Name,性别：@item.Age,邮箱：@item.Email</li>
+    }
+
+
+}

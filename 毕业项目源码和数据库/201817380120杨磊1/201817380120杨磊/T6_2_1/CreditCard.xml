@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<table width="100%" cellpadding="0" cellspacing="1" border="0" bgcolor="#8C96B5">
+  <tbody>
+    <tr  bgcolor="#E1E4EC" align="center"><th>CARD_NO</th><th>USER_NAME</th><th>PASSWORD</th>
+    </tr>
+    <tr bgcolor="#FFFFFF" align="center">
+      <th>3568427475946349</th>
+      <th>陆逊</th>
+      <th>238579</th>
+    </tr>
+    <tr bgcolor="#FFFFFF" align="center">
+      <th>3568736385475495</th>
+      <th>大乔</th>
+      <th>275748</th>
+    </tr>
+    <tr bgcolor="#FFFFFF" align="center">
+      <th>3568567835395343</th>
+      <th>孙尚香</th>
+      <th>271148</th>
+    </tr>
+  </tbody>
+</table>

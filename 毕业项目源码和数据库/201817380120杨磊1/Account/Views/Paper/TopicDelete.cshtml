@@ -1,0 +1,108 @@
+﻿
+@{
+    ViewBag.Title = "TopicDelete";
+    Layout = "~/Views/Shared/_LayoutExam.cshtml";
+}
+
+
+@using Account.Models;
+@{
+    List<Paper> paper = ViewBag.paper;
+    Topic topic = ViewBag.topic;
+}
+<h2>删除考题</h2>
+
+<h3>是否确认删除?</h3>
+<div>
+    <h4>考题信息</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            考题描述
+        </dt>
+
+        <dd>
+           @topic.TopicExplain
+        </dd>
+
+        <dt>
+            该题分值
+        </dt>
+
+        <dd>
+           @topic.TopicScore
+        </dd>
+
+        <dt>
+            类型
+        </dt>
+
+        <dd>
+            @topic.TopicType
+        </dd>
+
+        <dt>
+            A选项
+        </dt>
+
+        <dd>
+           @topic.TopicA
+        </dd>
+
+        <dt>
+            B选项
+        </dt>
+
+        <dd>
+            @topic.TopicB
+        </dd>
+
+        <dt>
+            C选项
+        </dt>
+
+        <dd>
+            @topic.TopicC
+        </dd>
+
+        <dt>
+            D选项
+        </dt>
+
+        <dd>
+            @topic.TopicD
+        </dd>
+
+        <dt>
+            排序
+        </dt>
+
+        <dd>
+             @topic.TopicSort
+        </dd>
+
+        <dt>
+            正确答案
+        </dt>
+
+        <dd>
+           @topic.TopicAnswer
+        </dd>
+
+        <dt>
+            试卷名
+        </dt>
+
+        <dd>
+          @topic.Paper.PaperName
+        </dd>
+
+    </dl>
+
+    <form action="/Paper/Delete2/@topic.TopicID" method="post">
+        <input name="__RequestVerificationToken" type="hidden" value="byt-u3RtOodwJ6hhsElKvk5JRv0uUe7Wwm_RQwMV1FJOpOesDvxlbPXPkYB92YCXFhT4RCiEmTsRZM0_-yhVRn5-C5pUKCZgABb_fI6MRqQ1" />        <div class="form-actions no-color">
+            <input type="submit" value="确认删除" class="btn btn-default" /> |
+        </div>
+    </form>
+</div>
+

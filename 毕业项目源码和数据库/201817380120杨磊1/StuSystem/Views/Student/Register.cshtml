@@ -1,0 +1,266 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+}
+
+@*-----------------jquery验证------------------------*@
+@*<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+    @section scripts{
+        <script type="text/javascript">
+
+            //入口
+            $(function () {
+                $("form").bind("submit", checkForm);
+                   //给form表单绑定submit提交事件，执行checkForm函数
+                   //checkForm函数在bind中未参数对象调用，是回调函数，需省略
+            });
+
+             //表单提交时触发
+            function checkForm() {
+                //全部正确则返回，不然false
+                if (  checkName() &&  checkPwd2()  && checkAge() && CheckIntro() ) {
+                    return true;
+                }else {
+                     return false;
+                }
+            }
+
+             //用户名不为空
+            function checkName() {
+                if ($("#Name").val ()== "") {
+                    $("#showMassage").html("用户名不能为空");
+                    $("#Name").focus();     //聚集焦点
+                    return false;
+                } else {
+                    $("#showMassage").html("");
+                   return true;
+                }
+
+            }
+            //密码不为空
+            function checkPwd() {
+
+                var pwd = $("#Password").val();
+                if (pwd == ""){
+                    $("#showPwd").html("密码不能为空");
+                    $("#Password").focus();     //聚集焦点
+                    return false;
+                } else {
+                    var reg = /^[A-Za-z0-9]{6,12}$/;      //正则表达式
+                    if (reg.test(pwd)) {                  //如果正确
+                        $("#showPwd").html("");
+                        return true;
+                    } else {
+                        $("#showPwd").html("密码由6到12位数字组成");
+                        $("#Password").focus();
+                          return false;
+                    }
+
+                }
+
+            }
+            //验证两次密码
+            function checkPwd2() {
+                checkPwd();
+                if ($("#Password2").val() !=$("#Password").val() ) {
+                    $("#showPwd2").html("两次密码不一致");
+                    $("#Password2").focus();           //聚集焦点
+                    return false;
+                } else {
+                    $("#showPwd2").html("");
+                     return true;
+                }
+
+            }
+            //年龄范围
+            function checkAge() {
+                //为空验证
+                if ($("#Age").val()=="") {
+                     $("#showAge").html("请输入年龄");
+                    $("#Age").focus();             //聚集焦点
+                    return false;
+                }
+               //验证范围
+                 if ($("#Age").val()<10 || $("#Age").val()>30 ) {
+                    $("#showAge").html("年龄为10-30岁");
+                    $("#Age").focus();          //聚集焦点
+                    return false;
+                 } else {
+                    $("#showAge").html("");
+                       return true;
+                }
+
+            }
+            //限制输入长度
+            function CheckIntro()
+            {
+                var Intro = $("#Intro").val();
+                if (Intro.length > 50) {
+                    $("#IntroMsg").html("自我介绍长度不能超过50个字！")
+                    return false;
+                } else {
+                    $("#IntroMsg").html("")
+                    return true;
+                }
+            }
+        </script>
+
+    }*@
+
+<h2>Register---学生注册</h2>
+@using (Html.BeginForm("Register", "Student", FormMethod.Post, new { @class = "form-horizontal", id = "RegisterForm", name = "RegisterForm" }))
+{
+<div class="form-group">
+    <label for="name" class="control-label">姓名：</label>
+    @Html.TextBox("Name", null, new
+    {
+        @class = "form-control"@*, onblur="checkName()"*@})
+
+    @Html.ValidationMessage("Name")                        @*模型验证*@
+    @*<span id="showMassage" style="color:red"></span>*@                @*常规query验证*@
+
+</div>
+<div class="form-group">
+    <label for="Password" class="control-label">密码：</label>
+    @Html.Password("Password", null, new
+    {
+        @class = "form-control"@*, onblur = "checkPwd()"*@})
+
+    @Html.ValidationMessage("Password")                           @*模型验证*@
+    @*<span id="showPwd" style="color:red"></span>*@
+</div>
+
+
+<div class="form-group">
+    <label for="Password2" class="control-label">确认密码：</label>
+    @Html.Password("Password2", null, new
+    {
+        @class = "form-control"@*, onblur = "checkPwd2()"*@})
+
+    @Html.ValidationMessage("Password2")                    @*模型验证*@
+    @*<span id="showPwd2" style="color:red"></span>*@
+</div>
+<div class="form-group">
+    <label for="Age" class="control-label">年龄：</label>
+    @Html.TextBox("Age", null, new
+    {
+        @class = "form-control"@*, onblur = "checkAge()"*@})
+
+    @Html.ValidationMessage("Age")                            @*模型验证*@
+    @*<span id="showAge" style="color:red"></span>*@
+</div>
+
+
+    <div class="form-group">
+        <label for="Sex" class="control-label">性别：</label>
+        @Html.RadioButton("Sex", "男", isChecked: true)男
+        @Html.RadioButton("Sex", "女")女
+    </div>
+    <div class="form-group">
+        <label for="Grades" class="control-label">班级：</label>
+        @*@Html.DropDownList("Grades", new SelectList(new[] { "2018173801班", "2018173802班" }), new { @class = "form-control" })*@     @*//写死*@
+
+        @Html.DropDownList("Grades", ViewBag.GradeItem as List<SelectListItem>, new { @class = "form-control" })          @*//动态获取*@
+    </div>
+    <div class="form-group">
+        <label for="Intro" class="control-label">请输入自我介绍：</label>
+        @Html.TextArea("Intro", "自己输入", new { @class = "form-control" })
+
+        @*<span id="IntroMsg" style="color:red"></span>*@
+    </div>
+    <div class="form-group">
+        @Html.CheckBox("Agreest")
+        <label for="Agreest" class="control-label">已阅读《阅读须知》</label>
+    </div>
+
+
+    <div>
+        <input type="submit" value="注册" class="btn btn-danger " />
+    </div>
+
+}
+@*---------------------模型验证  ------------*@
+
+@*@Html.ValidationSummary()           错误信息一块输出          *@                  
+
+<style type="text/css">
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+</style>
+
+
+@*---------------------表单验证------------*@
+
+@*<style type="text/css">
+    label.error {
+        color: red;
+    }
+
+    input.error {
+        border-color: red;
+    }
+</style>
+
+@section scripts{
+    <script type="text/javascript">
+
+        $(function () {
+            //from表单验证
+            $("#RegisterForm").validate({
+                //设置验证的元素验证项
+                rules: {
+                    Name: { required: true },
+                    Password: { required: true, checkReg: true },
+                    Password2: { required: true, equalTo: "#Password" },
+                    Age: { required: true, range: [10, 30] },
+                    Intro: { maxlength: 20 }
+
+                },
+                //设置对应的提示信息
+                messages: {
+                    Name: { required: "请输入用户名" },
+                    Password: { required: "请输入密码", checkReg: "密码位6-12位数字" },
+                    Password2: { required: "请输入确认密码", equalTo: "密码不一致" },
+                    Age: { required: "请输入年龄", range: "年龄位为10-30" },
+                    Intro: { maxlength: "最多输入20个字" }
+                },
+
+            })
+
+        })
+
+        //正则表达式
+        $.validator.addMethod("checkReg", function (value, e) {
+
+            var regExp = /^[A-Za-z0-9]{6,12}$/;
+            return regExp.test(value);
+        })
+
+    </script>
+
+}*@
+
+

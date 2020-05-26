@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = null;
+}
+
+@using StuSystem.Models
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/Content/View.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    
+</head>
+<body>
+    @Html.Partial("_MainTopPartial")                          @*嵌入部分布局页*@
+    <div>
+        <h3>这是Test控制器Login的视图</h3>
+        <br />
+        @Html.SetUI(new[] { "新闻", "热点", "头条" })
+        <br />
+        @Html.SetUI(new[] { "新闻", "热点", "头条" },"nav nav-tabs")
+    </div>
+
+</body>
+</html>

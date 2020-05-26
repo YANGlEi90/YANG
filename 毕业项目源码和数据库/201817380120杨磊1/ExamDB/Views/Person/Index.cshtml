@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+ <h2>登录 ---【单独获取某元素的值】</h2>
+<form method="post" action="Index">
+     <input type="text" name="userName" placeholder="请输入用户名"/>
+      <input type="password" name="userPwd" placeholder="请输入密码"/>
+      <input type="submit"value="登录"/>
+</form>
+
+<p>@ViewBag.UN </p>
+<p>@ViewBag.PW</p>

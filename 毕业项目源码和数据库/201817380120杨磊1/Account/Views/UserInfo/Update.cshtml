@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update</h2>
+
+
+@using Account.Models
+@{ 
+    UserInfos userInfo = ViewBag.userInfo;
+
+}
+
+<form action="/UserInfo/Update" method="post">
+
+    <input type="hidden" id="ID" name="ID" value="@userInfo.ID" />
+
+    <div class="form-group">
+        <label>姓名：</label>
+        <input type="text" name="Name" class="form-control" value="@userInfo.Name" />
+    </div>
+
+    <div class="form-group">
+        <label>部门：</label>
+        <select class="form-control" name="DepartmentID">
+            @*<option value="@userInfo.DepartmentID">@userInfo.Departments.Name</option>*@
+
+            @foreach (var item in ViewBag.dptlist)
+            {
+                if (userInfo.DepartmentID == item.ID)
+                {
+                    <option value="@item.ID" selected>@item.Name</option>
+                }
+
+                <option value="@item.ID">@item.Name</option>
+            }
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>性别：</label>
+
+        @if (@userInfo.Sex == true)
+        {
+            <input type="radio" name="Sex" value="true" checked="checked" /> @:男
+            <input type="radio" name="Sex" value="false" /> @:女
+        }
+        else
+        {
+            <input type="radio" name="Sex" value="true" checked="checked" /> @:男
+            <input type="radio" name="Sex" value="false" checked="checked" /> @:女
+        }
+
+    </div>
+
+    <div class="form-group">
+        <label>账号：</label>
+        <input type="text" name="Account" class="form-control" value="@userInfo.Account" />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">角色:</label>
+
+        @foreach (var item in ViewBag.role)
+        {
+            var check = false;
+            foreach (var item2 in ViewBag.UserRole)             /*遍历角色关系表*/
+            {
+                if (item.ID == item2.RoleID)
+                {
+                    check = true;
+                    break;
+                }
+
+            }
+
+            <input type="checkbox" value="@item.ID" checked="@check" name="roles" id="roles" />
+            @item.Name
+            <br />
+
+        }
+    </div>
+
+    <div class="form-group">
+        <label>密码：</label>
+        <input type="password" name="Pwd" class="form-control" value="@userInfo.Pwd" />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">图片:</label>
+        <img src="~/images/users/@userInfo.Photo" style="width:50px ;height:50px" />
+
+        @*保留该用户以前的图片*@
+        <input type="hidden" name="Photo" id="Photo" value="@userInfo.Photo" />
+        @*提供修改，在选择的图片*@
+        <input type="file" value="请选择图片" name="EPhoto" id="Ehoto" />
+
+    </div>
+
+    <div class="form-group">
+        <label>备注：</label>
+        <textarea name="Remark" class="form-control" value="@userInfo.Remark">@userInfo.Remark</textarea>
+    </div>
+
+    <div>
+        <a href="javascript:history.go(-1)">返回</a>
+        <input type="submit" value="保存" class="btn btn-primary" />
+    </div>
+
+</form>

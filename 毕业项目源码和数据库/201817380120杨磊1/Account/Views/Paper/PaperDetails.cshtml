@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "PaperDetails";
+    Layout = "~/Views/Shared/_LayoutExam.cshtml";
+}
+
+
+@using Account.Models;
+@{ 
+    Paper paper = ViewBag.paper;
+    List<Topic> topic = ViewBag.topic;
+}
+
+<h2>试卷详情</h2>
+<div>
+    <fieldset>
+        <legend>试卷信息</legend>
+        <dl class="dl-horizontal">
+            <dt> 试卷名</dt>
+            <dd>@paper.PaperName</dd>
+            <dt> 试卷说明</dt>
+            <dd> @paper.PaperExplain</dd>
+            <dt> 试卷时长</dt>
+            <dd> @paper.PaperTime</dd>
+            <dt> 试卷总分</dt>
+                @{
+                    var sum = 0;
+                }
+                @foreach (var item in topic)
+                {
+                    sum += item.TopicScore;
+                }
+          <dd>@sum </dd>
+
+        </dl>
+    </fieldset>
+
+    <fieldset>
+        <legend>试卷内容</legend>
+        <ul style="list-style:inside;">
+            @foreach (var item in topic)
+            {
+                <li style="padding:20px;">
+                    <span style="font-weight:bold">@item.TopicExplain  </span> (@item.TopicScore)
+
+                    <a href="/Paper/TopicDelete/@item.TopicID">删除考题</a> -
+                    <a href="/Paper/TopicEdit/@item.TopicID">修改考题</a>
+
+                    <ul style="padding-left:30px;">
+                        <li>A. @item.TopicA	 </li>
+                        <li>B. @item.TopicB	</li>
+                        <li>C. @item.TopicC	</li>
+                        <li>D. @item.TopicD	</li>
+                    </ul>
+
+
+                </li>
+
+            }
+
+        </ul>
+    </fieldset>
+
+</div>
+<p>
+    <a href="/Topics/Create?PaperID=1">添加考题</a> |
+    <a href="/Paper/PaperEdit/@paper.PaperID">修改试卷信息</a> |
+    <a href="/Paper/Index">返回试卷列表</a>
+</p>
+

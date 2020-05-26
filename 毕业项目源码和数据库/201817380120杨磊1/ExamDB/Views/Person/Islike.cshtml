@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Islike";
+}
+
+<h2>选择爱好---【集合】</h2>
+
+<form method="post" action="Islike">
+    <input type="checkbox" name="love" value="玩游戏" />玩游戏
+    <input type="checkbox" name="love" value="搞学习" />搞学习
+    <input type="checkbox" name="love" value="打电话" />打电话
+    <input type="checkbox" name="love" value="看漫画" />看漫画
+    <input type="submit" value="提交" />
+</form>
+
+@if (ViewBag.GetLike != null)
+{
+    foreach (var item in ViewBag.GetLike)
+    {
+        <h3>@item</h3>
+    }
+}

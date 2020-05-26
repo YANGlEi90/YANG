@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+}
+
+
+<h2>Search</h2>
+<table class="table">
+    <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>账号</th>
+        <th>电话</th>
+        <th>邮箱地址</th>
+        <th>操作</th>
+    </tr>
+    @foreach (var item in ViewBag.tea)
+    {
+        <tr>
+            <td>@item</td>
+            <td>@item.TeacherName</td>
+            <td>@item.TeacherLoginName</td>
+            <td>@item.TeacherPhone</td>
+            <td>@item.TeacherEmail</td>
+        </tr>
+    }
+
+</table>

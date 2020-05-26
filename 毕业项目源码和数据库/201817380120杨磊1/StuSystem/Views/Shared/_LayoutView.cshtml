@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/View.css" rel="stylesheet" />
+</head>
+<body>
+    @*【-----------------------------------自己定义的布局页--------------------------------------】*@
+
+   
+    @Html.Partial("_TopPartial")                            @*嵌入部分布局页*@
+    <div class="center">
+        <div class="left">这里是左边部分
+        </div>
+
+        <div class="right">
+            @RenderBody()
+        </div>
+
+    </div>
+    <div class="bottom">
+        <h2>这里是底部版权</h2>
+    </div>
+   
+</body>
+</html>

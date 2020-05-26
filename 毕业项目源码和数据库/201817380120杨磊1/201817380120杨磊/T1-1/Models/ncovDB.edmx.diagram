@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d7bc8c6ee3214a2b9129c5bfd2ca3bcc" Name="Diagram1" ZoomLevel="125">
+        <EntityTypeShape EntityType="ncovDBModel.sysdiagrams" Width="1.5" PointX="8.625" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ncovDBModel.tbDetail" Width="1.5" PointX="4.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ncovDBModel.tbStu" Width="1.5" PointX="4.875" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ncovDBModel.tbTea" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <AssociationConnector Association="ncovDBModel.FK__tbDetail__stuID__164452B1" ManuallyRouted="false" />
+        <AssociationConnector Association="ncovDBModel.FK__tbDetail__TeaID__173876EA" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

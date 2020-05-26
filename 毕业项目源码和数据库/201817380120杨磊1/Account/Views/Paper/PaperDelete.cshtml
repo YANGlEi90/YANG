@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "PaperDelete";
+    Layout = "~/Views/Shared/_LayoutExam.cshtml";
+}
+
+
+@using Account.Models;
+@{
+    Paper paper = ViewBag.paper;
+}
+<h2>删除试卷</h2>
+
+<h3>是否确认删除？</h3>
+<div>
+    <h4>试卷信息</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            试卷名
+        </dt>
+
+        <dd>
+           @paper.PaperName
+        </dd>
+
+        <dt>
+            试卷说明
+        </dt>
+
+        <dd>
+            @paper.PaperExplain
+        </dd>
+
+        <dt>
+            试卷时长
+        </dt>
+
+        <dd>
+          @paper.PaperTime
+        </dd>
+
+    </dl>
+
+    <form action="/Paper/Delete/@paper.PaperID" method="post">
+        <input name="__RequestVerificationToken" type="hidden" value="I4BX3W6LRV0fZHFIZiECgayg4zaIg9Ejl3jJwqgyDahW3Zl4Pt8HPgJYTSiVejGOTgI2K-76P_aOy4brMD0iugVbQZxGjgesgrNyMSkjV1E1" /> 
+        <div class="form-actions no-color">
+            <input type="submit" value=" 删除 " class="btn btn-default" /> |
+            <a href="/Paper/Index">返回试卷列表</a>
+        </div>
+    </form>
+</div>
+

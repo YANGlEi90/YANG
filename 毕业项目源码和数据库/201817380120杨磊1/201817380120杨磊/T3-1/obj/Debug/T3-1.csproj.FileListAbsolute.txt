@@ -1,0 +1,6 @@
+E:\VS2019项目库\201817380120杨磊\T3-1\bin\Debug\T3-1.exe.config
+E:\VS2019项目库\201817380120杨磊\T3-1\bin\Debug\T3-1.exe
+E:\VS2019项目库\201817380120杨磊\T3-1\bin\Debug\T3-1.pdb
+E:\VS2019项目库\201817380120杨磊\T3-1\obj\Debug\T3-1.csprojAssemblyReference.cache
+E:\VS2019项目库\201817380120杨磊\T3-1\obj\Debug\T3-1.exe
+E:\VS2019项目库\201817380120杨磊\T3-1\obj\Debug\T3-1.pdb

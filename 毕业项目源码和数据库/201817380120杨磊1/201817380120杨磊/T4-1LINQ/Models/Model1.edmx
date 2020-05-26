@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ncovDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="stuID" Type="nvarchar" MaxLength="12" />
+          <Property Name="TeaID" Type="int" />
+          <Property Name="fillTime" Type="datetime" />
+          <Property Name="isCough" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="isFever" Type="char" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbStu">
+          <Key>
+            <PropertyRef Name="stuID" />
+          </Key>
+          <Property Name="stuID" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="stuName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="stuAddress" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbTea">
+          <Key>
+            <PropertyRef Name="TeaID" />
+          </Key>
+          <Property Name="TeaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeaName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__tbDetail__stuID__164452B1">
+          <End Role="tbStu" Type="Self.tbStu" Multiplicity="0..1" />
+          <End Role="tbDetail" Type="Self.tbDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbStu">
+              <PropertyRef Name="stuID" />
+            </Principal>
+            <Dependent Role="tbDetail">
+              <PropertyRef Name="stuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbDetail__TeaID__173876EA">
+          <End Role="tbTea" Type="Self.tbTea" Multiplicity="0..1" />
+          <End Role="tbDetail" Type="Self.tbDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbTea">
+              <PropertyRef Name="TeaID" />
+            </Principal>
+            <Dependent Role="tbDetail">
+              <PropertyRef Name="TeaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ncovDBModelStoreContainer">
+          <EntitySet Name="tbDetail" EntityType="Self.tbDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbStu" EntityType="Self.tbStu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbTea" EntityType="Self.tbTea" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tbDetail__stuID__164452B1" Association="Self.FK__tbDetail__stuID__164452B1">
+            <End Role="tbStu" EntitySet="tbStu" />
+            <End Role="tbDetail" EntitySet="tbDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbDetail__TeaID__173876EA" Association="Self.FK__tbDetail__TeaID__173876EA">
+            <End Role="tbTea" EntitySet="tbTea" />
+            <End Role="tbDetail" EntitySet="tbDetail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ncovDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="stuID" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="TeaID" Type="Int32" />
+          <Property Name="fillTime" Type="DateTime" Precision="3" />
+          <Property Name="isCough" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="isFever" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tbStu" Relationship="Self.FK__tbDetail__stuID__164452B1" FromRole="tbDetail" ToRole="tbStu" />
+          <NavigationProperty Name="tbTea" Relationship="Self.FK__tbDetail__TeaID__173876EA" FromRole="tbDetail" ToRole="tbTea" />
+        </EntityType>
+        <EntityType Name="tbStu">
+          <Key>
+            <PropertyRef Name="stuID" />
+          </Key>
+          <Property Name="stuID" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="stuName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="stuAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbDetail" Relationship="Self.FK__tbDetail__stuID__164452B1" FromRole="tbStu" ToRole="tbDetail" />
+        </EntityType>
+        <EntityType Name="tbTea">
+          <Key>
+            <PropertyRef Name="TeaID" />
+          </Key>
+          <Property Name="TeaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeaName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbDetail" Relationship="Self.FK__tbDetail__TeaID__173876EA" FromRole="tbTea" ToRole="tbDetail" />
+        </EntityType>
+        <Association Name="FK__tbDetail__stuID__164452B1">
+          <End Role="tbStu" Type="Self.tbStu" Multiplicity="0..1" />
+          <End Role="tbDetail" Type="Self.tbDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbStu">
+              <PropertyRef Name="stuID" />
+            </Principal>
+            <Dependent Role="tbDetail">
+              <PropertyRef Name="stuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbDetail__TeaID__173876EA">
+          <End Role="tbTea" Type="Self.tbTea" Multiplicity="0..1" />
+          <End Role="tbDetail" Type="Self.tbDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbTea">
+              <PropertyRef Name="TeaID" />
+            </Principal>
+            <Dependent Role="tbDetail">
+              <PropertyRef Name="TeaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ncovDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbDetail" EntityType="Self.tbDetail" />
+          <EntitySet Name="tbStu" EntityType="Self.tbStu" />
+          <EntitySet Name="tbTea" EntityType="Self.tbTea" />
+          <AssociationSet Name="FK__tbDetail__stuID__164452B1" Association="Self.FK__tbDetail__stuID__164452B1">
+            <End Role="tbStu" EntitySet="tbStu" />
+            <End Role="tbDetail" EntitySet="tbDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbDetail__TeaID__173876EA" Association="Self.FK__tbDetail__TeaID__173876EA">
+            <End Role="tbTea" EntitySet="tbTea" />
+            <End Role="tbDetail" EntitySet="tbDetail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ncovDBModelStoreContainer" CdmEntityContainer="ncovDBEntities">
+          <EntitySetMapping Name="tbDetail">
+            <EntityTypeMapping TypeName="ncovDBModel.tbDetail">
+              <MappingFragment StoreEntitySet="tbDetail">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="stuID" ColumnName="stuID" />
+                <ScalarProperty Name="TeaID" ColumnName="TeaID" />
+                <ScalarProperty Name="fillTime" ColumnName="fillTime" />
+                <ScalarProperty Name="isCough" ColumnName="isCough" />
+                <ScalarProperty Name="isFever" ColumnName="isFever" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbStu">
+            <EntityTypeMapping TypeName="ncovDBModel.tbStu">
+              <MappingFragment StoreEntitySet="tbStu">
+                <ScalarProperty Name="stuID" ColumnName="stuID" />
+                <ScalarProperty Name="stuName" ColumnName="stuName" />
+                <ScalarProperty Name="stuAddress" ColumnName="stuAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbTea">
+            <EntityTypeMapping TypeName="ncovDBModel.tbTea">
+              <MappingFragment StoreEntitySet="tbTea">
+                <ScalarProperty Name="TeaID" ColumnName="TeaID" />
+                <ScalarProperty Name="TeaName" ColumnName="TeaName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

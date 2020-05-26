@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d472fe52c31b4a44aa286c902f15d449" Name="Diagram1">
+        <EntityTypeShape EntityType="AccountDBModel.Departments" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountDBModel.Menus" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountDBModel.R_Role_Menus" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountDBModel.R_User_Roles" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountDBModel.Roles" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountDBModel.UserInfos" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="AccountDBModel.FK_UserInfos_Departments" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountDBModel.FK_R_Role_Menus_Menus" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountDBModel.FK_R_Role_Menus_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountDBModel.FK_R_User_Roles_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountDBModel.FK_R_User_Roles_UserInfos" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AccountDBModel.v_user_menus" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="AccountDBModel.v_User_Role_Menu" Width="2.125" PointX="7.375" PointY="6.75" />
+        <EntityTypeShape EntityType="AccountDBModel.Answer" Width="1.75" PointX="7.5" PointY="11.25" />
+        <EntityTypeShape EntityType="AccountDBModel.Detail" Width="1.75" PointX="9.75" PointY="14" />
+        <EntityTypeShape EntityType="AccountDBModel.Paper" Width="1.75" PointX="5.25" PointY="11.875" />
+        <EntityTypeShape EntityType="AccountDBModel.Student" Width="1.75" PointX="5.25" PointY="15.125" />
+        <EntityTypeShape EntityType="AccountDBModel.Teacher" Width="1.75" PointX="5.25" PointY="18.5" />
+        <EntityTypeShape EntityType="AccountDBModel.Topic" Width="1.75" PointX="7.75" PointY="17.25" />
+        <AssociationConnector Association="AccountDBModel.FK__Answer__PaperID__300424B4" />
+        <AssociationConnector Association="AccountDBModel.FK__Answer__StuID__30F848ED" />
+        <AssociationConnector Association="AccountDBModel.FK__Answer__TeacherI__31EC6D26" />
+        <AssociationConnector Association="AccountDBModel.FK__Detail__AnswerID__32E0915F" />
+        <AssociationConnector Association="AccountDBModel.FK__Detail__TopicID__33D4B598" />
+        <AssociationConnector Association="AccountDBModel.FK__Topic__PaperID__34C8D9D1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
