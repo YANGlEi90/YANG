@@ -1,0 +1,80 @@
+﻿<!Doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <meta charset="utf-8">
+    <script src="~/Scripts/jquery.min.js"></script>
+    <link href="~/Content/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class='particle-network-animation'>
+    </div>
+    <script src="~/Scripts/script.js"></script>
+    <div class="container">
+        <div class="row">
+            <div class="col-1">
+                
+            </div>
+            <div class="col-12">
+                <div id="div_top">
+                    <div class="container" style="background-color: white">
+                        <div class="row">
+                            <div class="col-12">
+                                <ul class="nav" id="ul-1">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="#">YANG-Blog</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">博友圈</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">我的主页</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="#">博友</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                @RenderBody()
+            <div id="div_buttom" style="margin-top:20px">
+                <p style="border-bottom:1px solid white; "></p>
+                <footer id="colophon" role="contentinfo">
+                    <div class="site-info" style="color:white;">
+                        <span>友情链接：</span>
+                        <a href="http://www.zfsphp.com">张仿松博客</a>
+                        <a href="http://lara.zfsphp.com">Lara博客</a>
+                        <a href="https://www.ilovehai.com" target=&quot;_blank&quot;>窝心美文</a>
+                        <a href="http://smile6666.com" target=&quot;_blank&quot;>smile小站</a>
+                    </div>
+                </footer>
+                <footer role="contentinfo" style="margin-top:auto; color:white;">
+                    <div class="site-info" style="text-align:center; color:white;">
+                        <span>浙ICP备16000810号-2</span>
+                        <span style="position:relative;top:-1px;">
+                            <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://"); document.write(unescape("%3Cspan id='cnzz_stat_icon_1259945738'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1259945738%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+                        </span>
+                    </div>
+                </footer>
+                <p style="border-bottom:1px solid white;"></p>
+            </div>
+            <div class="col-1">
+            </div>
+        </div>
+    </div>
+    
+    </div>  
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+</body>
+</html>
+
+

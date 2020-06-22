@@ -1,0 +1,194 @@
+﻿
+@{
+    ViewBag.Title = "PageHomeT";
+    Layout = "~/Views/Shared/HomePage.cshtml";
+}
+
+<style>
+  .nav-item active a{
+      font-size:16px;
+  }
+</style>
+<link href="~/Content/index1.css" rel="stylesheet" />
+    <div>
+            <div style="height:50px">
+                <h3>xxx的博客</h3>
+            </div>
+            <div class="card" style="width: 69.5rem;">
+                <img src="" class="card-img-top" alt="">
+
+                <div class="card-body">
+                    <h5 class="card-title">YANGlEi</h5>
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">个人博客</a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="#">日志 </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">相册</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">说说</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    
+<div class="container" style=" margin-top:20px; color:white">
+    <div class="row">
+        <div class="col-lg-3" style="border:1px solid white">
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <ul class="list-unstyled">
+                <li class="media">
+                    <img src="..." class="mr-3" alt="...">
+                    <div class="media-body">
+                        <h5 class="mt-0 mb-1">C#入门</h5>
+                        scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at,  nisi vulputate fringilla. Donec
+                    </div>
+                </li>
+                <li class="media my-4">
+                    <img src="..." class="mr-3" alt="...">
+                    <div class="media-body">
+                        <h5 class="mt-0 mb-1">C#进阶</h5>
+                        putate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate frnec lacinia congue felis in faucibus.
+                    </div>
+                </li>
+                <li class="media">
+                    <img src="..." class="mr-3" alt="...">
+                    <div class="media-body">
+                        <h5 class="mt-0 mb-1">C#高阶</h5>
+                        Cras sit amet nibh libero, in gravida nmentum nunc ac nisi vulputate fringilla. Doneongue felis in faucibus.
+                    </div>
+                </li>
+            </ul>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-lg-9">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">我的主页</a></li>
+                    <li class="breadcrumb-item"><a href="#">个人博客</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">C#入门</li>
+                </ol>
+            </nav>
+            <p style="border-bottom:1px solid white;"></p>
+            <h4>初识C#</h4>
+            <p class="font-italic">
+                C#是微软推出的一种基于.NET框架的、面向对象的高级编程语言。
+                C#以.NET框架类库作为基础，拥有类似Visual Basic的快速开发能力。
+                C#由安德斯·海尔斯伯格主持开发，微软在2000年发布了这种语言，希望借助这种语言来取代Java。
+                C#已经成为Ecma国际和国际标准组织的标准规范。
+
+                C#的发音为“C sharp”，“#”读作“sharp”（/ʃɑːp/），
+                命名启发于音乐上的音名“C♯”，在音乐中“C♯”表示C升半音，为比C高一点的音节，且“#”形似4个加号，
+                微软借助这样的命名，表示C#在一些语言特性方面对C++的提升的意思。
+
+                由于显示器（标准字体、浏览器等）的技术限制，且大部分的键盘布局上不存在升记号（♯），
+                所以井号（#）被用于此编程语言的名称中，约定在ECMA-334 C#语言规范中。
+                ECMA标准列出的C#设计目标：
+
+                1.C#旨在设计成为一种“简单、现代、通用”，以及面向对象的程序设计语言
+                2.此种语言的实现，应提供对于以下软件工程要素的支持：强类型检查、数组维度检查、未初始化的变量引用检测、自动垃圾收集（Garbage Collection，指一种存储器自动释放技术）。
+                软件必须做到强大、持久，并具有较强的编程生产力。
+                3.此种语言为在分布式环境中的开发提供适用的组件开发应用。
+                4.为使程序员容易迁移到这种语言，源代码的可移植性十分重要，尤其是对于那些已熟悉C和C++的程序员而言。
+                5.对国际化的支持非常重要。
+                6.C#适合为独立和嵌入式的系统编写程序，从使用复杂操作系统的大型系统到特定应用的小型系统均适用。
+                7.虽然C#程序在存储和操作能力需求方面具备经济性，但此种语言在某些情况下并不能在性能和程序大小方面与C语言相抗衡。
+            </p>
+            <p style="border-bottom:1px solid white;"></p>
+            <div style="border:1px solid white">
+                <form>
+                    <input type="text" class="bg-dark" style="width:800px;height:100px;" />
+                    <button type="submit" class="btn btn-dark mb-2">评论</button>
+                </form>
+            </div>
+            <div id="comments" class="comments-area">
+                <h2 class="comments-title">《<span>Git常用命令</span>》上有&nbsp;17&nbsp;条评论!</h2>
+                <ol class="commentlist" id="commentWraper">
+                    <li class="comment even thread-even depth-0" id="li-comment-6">
+                        <article id="comment-6" class="comment">
+                            <header class="comment-meta comment-author vcard"><img src="https://www.zfsphp.com/uploads/images//avatar/202004/1587190350.jpg" class="photo" height="44" width="44" /><cite class="fn">zhao606101956 </cite><time datetime="">2个月前</time></header>
+                            <section class="comment-content comment" style="margin-bottom:10px;line-height:25px;">adassdas</section>
+                        </article>
+                    </li>
+                    <li class="comment even thread-even depth-0" id="li-comment-6">
+                        <article id="comment-6" class="comment">
+                            <header class="comment-meta comment-author vcard"><img src="https://www.zfsphp.com/uploads/images//avatar/202004/1587799042.jpg" class="photo" height="44" width="44" /><cite class="fn">ssj </cite><time datetime="">1个月前</time></header>
+                            <section class="comment-content comment" style="margin-bottom:10px;line-height:25px;">12312321</section>
+                        </article>
+                    </li>
+                    <li class="comment even thread-even depth-0" id="li-comment-6">
+                        <article id="comment-6" class="comment">
+                            <header class="comment-meta comment-author vcard"><img src="https://www.zfsphp.com/uploads/images//avatar/202004/1587799042.jpg" class="photo" height="44" width="44" /><cite class="fn">ssj </cite><time datetime="">1个月前</time></header>
+                            <section class="comment-content comment" style="margin-bottom:10px;line-height:25px;">123123123212131</section>
+                        </article>
+                    </li>
+                    <li class="comment even thread-even depth-0" id="li-comment-6">
+                        <article id="comment-6" class="comment">
+                            <header class="comment-meta comment-author vcard"><img src="https://www.zfsphp.com/uploads/images//avatar/202005/1588300432.jpg" class="photo" height="44" width="44" /><cite class="fn">12399 </cite><time datetime="">1个月前</time></header>
+                            <section class="comment-content comment" style="margin-bottom:10px;line-height:25px;">大佬，互挂友链吗，联系我QQ1791282006</section>
+                        </article>
+                    </li>
+                    <li class="comment even thread-even depth-0" id="li-comment-6">
+                        <article id="comment-6" class="comment">
+                            <header class="comment-meta comment-author vcard"><img src="https://www.zfsphp.com/uploads/images//avatar/202005/1588753534.jpg" class="photo" height="44" width="44" /><cite class="fn">2192020035 </cite><time datetime="">1个月前</time></header>
+                            <section class="comment-content comment" style="margin-bottom:10px;line-height:25px;">1</section>
+                        </article>
+                    </li>
+                    <li class="comment even thread-even depth-0" id="li-comment-6">
+                        <article id="comment-6" class="comment">
+                            <header class="comment-meta comment-author vcard"><img src="http://www.zfsphp.com/uploads/images/link/201909/1567522249.jpg" class="photo" height="44" width="44" /><cite class="fn">admin </cite><time datetime="">1个月前</time></header>
+                            <section class="comment-content comment" style="margin-bottom:10px;line-height:25px;">可以的 加不上你QQ ?</section>
+                        </article>
+                    </li>
+                    <li class="comment even thread-even depth-0" id="li-comment-6">
+                        <article id="comment-6" class="comment">
+                            <header class="comment-meta comment-author vcard"><img src="https://www.zfsphp.com/uploads/images//avatar/202005/1590054730.jpg" class="photo" height="44" width="44" /><cite class="fn">smile </cite><time datetime="">1个月前</time></header>
+                            <section class="comment-content comment" style="margin-bottom:10px;line-height:25px;">大佬换友链吗？ QQ：2712893575</section>
+                        </article>
+                    </li>
+                    <li class="comment even thread-even depth-0" id="li-comment-6">
+                        <article id="comment-6" class="comment">
+                            <header class="comment-meta comment-author vcard"><img src="https://www.zfsphp.com/uploads/images//avatar/202005/1590161659.jpg" class="photo" height="44" width="44" /><cite class="fn">0902170402 </cite><time datetime="">4周前</time></header>
+                            <section class="comment-content comment" style="margin-bottom:10px;line-height:25px;">gfsgsf</section>
+                        </article>
+                    </li>
+                    <li class="comment even thread-even depth-0" id="li-comment-6">
+                        <article id="comment-6" class="comment">
+                            <header class="comment-meta comment-author vcard"><img src="https://www.zfsphp.com/uploads/images//avatar/202005/1590240041.jpg" class="photo" height="44" width="44" /><cite class="fn">伊云 </cite><time datetime="">4周前</time></header>
+                            <section class="comment-content comment" style="margin-bottom:10px;line-height:25px;">可以互相添加下友情链接吗？</section>
+                        </article>
+                    </li>
+                    
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>

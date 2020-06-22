@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @*@Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
+    <link rel="stylesheet" type="text/css" href="../res/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../res/css/main.css">
+</head>
+<body>
+    <div class="header">
+        <div class="menu-btn">
+            <div class="menu"></div>
+        </div>
+        <h1 class="logo">
+            <a href="/Dynamic/Index">
+                <span>YANGBLOG</span>
+                <img src="../res/img/logo.png">
+            </a>
+        </h1>
+        <div class="nav" id="div_top">
+            <a href="/Dynamic/Index" class="active" name="1">文章</a>
+            <a href="/Dynamic/Dynamics" name="1">微语</a>
+            <a href="/MessageBoard/Index" name="1">留言</a>
+            <a href="/Album/Index" name="1">相册</a>
+            <a href="/Album/Index" name="1">博友圈</a>
+            <a href="/User/Index" name="1">关于</a>
+        </div>
+        <ul class="layui-nav header-down-nav">
+            <li class="layui-nav-item"><a href="index.html" class="active">文章</a></li>
+            <li class="layui-nav-item"><a href="whisper.html">微语</a></li>
+            <li class="layui-nav-item"><a href="leacots.html">留言</a></li>
+            <li class="layui-nav-item"><a href="album.html">相册</a></li>
+            <li class="layui-nav-item"><a href="about.html">关于</a></li>
+        </ul>
+        <p class="welcome-text">
+            @*登录模态框*@
+            @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+                    登录
+                </button>*@
+            <a href="" data-toggle="modal" data-target="#staticBackdrop">登录</a>|<a href="">注册</a>
+            @*欢迎来到<span class="name">小明</span>的博客~*@
+        </p>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+    <div class="footer-wrap">
+        <div class="footer w1000">
+            <div class="qrcode">
+                <img src="../res/img/erweima.jpg">
+            </div>
+            <div class="practice-mode">
+                <img src="../res/img/down_img.jpg">
+                <div class="text">
+                    <h4 class="title">我的联系方式</h4>
+                    <p>微信<span class="WeChat">1234567890</span></p>
+                    <p>手机<span class="iphone">1234567890</span></p>
+                    <p>邮箱<span class="email">1234567890@qq.com</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+@*@Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)*@
+<script src="~/res/layui/layui.all.js"></script>
+<script src="~/res/layui/layui.js"></script>
+<script type="text/html" id="laytplCont">
+    <div class="cont">
+        <div class="img">
+            {{#  if(d.avatar){ }}
+            <img src="{{d.avatar}}" alt="">
+            {{#  } else { }}
+            <img src="../res/img/header.png" alt="">
+            {{# } }}
+        </div>
+        <div class="text">
+            <p class="tit"><span class="name">{{d.name}}</span><span class="data">2018/06/06</span></p>
+            <p class="ct">{{d.cont}}</p>
+        </div>
+    </div>
+</script>
+<script type="text/javascript">
+    layui.config({
+        base: '../res/js/util/'
+    }).use(['element', 'laypage', 'jquery', 'menu'], function () {
+        element = layui.element, laypage = layui.laypage, $ = layui.$, menu = layui.menu;
+        laypage.render({
+            elem: 'demo'
+            , count: 70 //数据总数，从服务端得到
+        });
+        menu.init();
+    })
+
+    layer.photos({
+      photos: '#layer-photos-demo'
+      ,anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+      ,tab:function(pic,layero){
+        console.log(pic,layero)
+      }
+    });
+    //$("#open").click(function () {
+    //    $("#open_con").toggle();
+    //});
+</script>
+
