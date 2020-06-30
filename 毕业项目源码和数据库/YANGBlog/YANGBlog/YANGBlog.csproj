@@ -47,10 +47,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -130,6 +138,60 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Album.cs">
+      <DependentUpon>YANGBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AlbumGroup.cs">
+      <DependentUpon>YANGBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Comment.cs">
+      <DependentUpon>YANGBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Dynamic.cs">
+      <DependentUpon>YANGBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fabulous.cs">
+      <DependentUpon>YANGBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Friend.cs">
+      <DependentUpon>YANGBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FriendGroup.cs">
+      <DependentUpon>YANGBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MessageBoard.cs">
+      <DependentUpon>YANGBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MessageReply.cs">
+      <DependentUpon>YANGBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reply.cs">
+      <DependentUpon>YANGBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>YANGBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserInfo.cs">
+      <DependentUpon>YANGBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Visitor.cs">
+      <DependentUpon>YANGBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\YANGBlog.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>YANGBlog.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\YANGBlog.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>YANGBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\YANGBlog.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>YANGBlog.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -213,9 +275,20 @@
     <Content Include="Content\images\zhh_thumb.gif" />
     <Content Include="Content\images\zy_thumb.gif" />
     <Content Include="Content\index1.css" />
+    <Content Include="Content\login.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\YANGBlog.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>YANGBlog.Context.cs</LastGenOutput>
+      <DependentUpon>YANGBlog.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\YANGBlog.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>YANGBlog.edmx</DependentUpon>
+      <LastGenOutput>YANGBlog.cs</LastGenOutput>
+    </Content>
     <Content Include="res\css\main.css" />
     <Content Include="res\img\banner.jpg" />
     <Content Include="res\img\down_img.jpg" />
@@ -378,6 +451,13 @@
     <Content Include="res\layui\font\iconfont.ttf" />
     <Content Include="res\layui\font\iconfont.woff" />
     <Content Include="res\layui\font\iconfont.woff2" />
+    <EntityDeploy Include="Models\YANGBlog.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>YANGBlog.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\YANGBlog.edmx.diagram">
+      <DependentUpon>YANGBlog.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -390,6 +470,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\login.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
@@ -502,7 +583,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -514,6 +594,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

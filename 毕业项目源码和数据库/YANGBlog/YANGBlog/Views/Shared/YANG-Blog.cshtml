@@ -4,10 +4,11 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @*@Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")*@
     <link rel="stylesheet" type="text/css" href="../res/layui/css/layui.css">
     <link rel="stylesheet" type="text/css" href="../res/css/main.css">
+    
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <div class="header">
@@ -36,12 +37,6 @@
             <li class="layui-nav-item"><a href="about.html">关于</a></li>
         </ul>
         <p class="welcome-text">
-            @*登录模态框*@
-            @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-                    登录
-                </button>*@
-            <a href="" data-toggle="modal" data-target="#staticBackdrop">登录</a>|<a href="">注册</a>
-            @*欢迎来到<span class="name">小明</span>的博客~*@
         </p>
     </div>
     <div>
@@ -63,11 +58,10 @@
             </div>
         </div>
     </div>
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
 </body>
 </html>
-@*@Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)*@
 <script src="~/res/layui/layui.all.js"></script>
 <script src="~/res/layui/layui.js"></script>
 <script type="text/html" id="laytplCont">
@@ -97,13 +91,13 @@
         menu.init();
     })
 
-    layer.photos({
-      photos: '#layer-photos-demo'
-      ,anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
-      ,tab:function(pic,layero){
-        console.log(pic,layero)
-      }
-    });
+    //layer.photos({
+    //    photos: '#layer-photos-demo'
+    //    , anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+    //    , tab: function (pic, layero) {
+    //        console.log(pic, layero)
+    //    }
+    //});
     //$("#open").click(function () {
     //    $("#open_con").toggle();
     //});

@@ -82,3 +82,9 @@ E:\毕业项目\毕业项目源码和数据库\YANGBlog\YANGBlog\bin\zh-Hans\Sys
 E:\毕业项目\毕业项目源码和数据库\YANGBlog\YANGBlog\obj\Debug\YANGBlog.csproj.CopyComplete
 E:\毕业项目\毕业项目源码和数据库\YANGBlog\YANGBlog\obj\Debug\YANGBlog.dll
 E:\毕业项目\毕业项目源码和数据库\YANGBlog\YANGBlog\obj\Debug\YANGBlog.pdb
+E:\毕业项目\毕业项目源码和数据库\YANGBlog\YANGBlog\bin\EntityFramework.dll
+E:\毕业项目\毕业项目源码和数据库\YANGBlog\YANGBlog\bin\EntityFramework.SqlServer.dll
+E:\毕业项目\毕业项目源码和数据库\YANGBlog\YANGBlog\bin\EntityFramework.xml
+E:\毕业项目\毕业项目源码和数据库\YANGBlog\YANGBlog\bin\EntityFramework.SqlServer.xml
+E:\毕业项目\毕业项目源码和数据库\YANGBlog\YANGBlog\bin\zh-Hans\EntityFramework.resources.dll
+E:\毕业项目\毕业项目源码和数据库\YANGBlog\YANGBlog\obj\Debug\YANGBlog.csprojAssemblyReference.cache
