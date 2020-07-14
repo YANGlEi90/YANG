@@ -6,10 +6,14 @@
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" type="text/css" href="../res/layui/css/layui.css">
     <link rel="stylesheet" type="text/css" href="../res/css/main.css">
-    
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
+@using YANGBlog.Models
+@{
+    UserInfo user = Session["User"] as UserInfo;
+}
 <body>
     <div class="header">
         <div class="menu-btn">
@@ -21,22 +25,25 @@
                 <img src="../res/img/logo.png">
             </a>
         </h1>
+       
         <div class="nav" id="div_top">
-            <a href="/Dynamic/Index" class="active" name="1">文章</a>
+            <a href="/Dynamic/Index"  name="1">文章</a>
             <a href="/Dynamic/Dynamics" name="1">微语</a>
             <a href="/MessageBoard/Index" name="1">留言</a>
-            <a href="/Album/Index" name="1">相册</a>
-            <a href="/Album/Index" name="1">博友圈</a>
+            @*<a href="/Album/Index" name="1">相册</a>*@
+            <a href="/Blogword/BlogwordIndex" name="1">博友圈</a>
             <a href="/User/Index" name="1">关于</a>
+            <div style="margin-left:650px" >欢迎你 <i class="layui-icon layui-icon-user"></i>@user.UserName<a href="/User/Out"><i class="layui-icon layui-icon-logout">退出</i></a></div>
         </div>
-        <ul class="layui-nav header-down-nav">
+        
+        <ul class="layui-nav header-down-nav" >
             <li class="layui-nav-item"><a href="index.html" class="active">文章</a></li>
             <li class="layui-nav-item"><a href="whisper.html">微语</a></li>
             <li class="layui-nav-item"><a href="leacots.html">留言</a></li>
-            <li class="layui-nav-item"><a href="album.html">相册</a></li>
+            @*<li class="layui-nav-item"><a href="album.html">相册</a></li>*@
             <li class="layui-nav-item"><a href="about.html">关于</a></li>
         </ul>
-        <p class="welcome-text">
+        <p class="welcome-text" >
         </p>
     </div>
     <div>
@@ -58,12 +65,13 @@
             </div>
         </div>
     </div>
-    @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", required: false)
+
 </body>
 </html>
 <script src="~/res/layui/layui.all.js"></script>
 <script src="~/res/layui/layui.js"></script>
+@Scripts.Render("~/bundles/jquery")
+@RenderSection("scripts", required: false)
 <script type="text/html" id="laytplCont">
     <div class="cont">
         <div class="img">
@@ -90,7 +98,7 @@
         });
         menu.init();
     })
-
+    
     //layer.photos({
     //    photos: '#layer-photos-demo'
     //    , anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）

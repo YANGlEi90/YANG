@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/YANG-Blog.cshtml";
 }
 @using YANGBlog.Models;
+
 <div class="content whisper-content leacots-content details-content">
     <div class="cont w1000">
         <div class="whisper-list">
@@ -15,19 +16,21 @@
                                 <h3>@ViewBag.list.DynamicHead</h3>
                                 <p class="cont-info"><span class="data">@ViewBag.list.Releasetime</span><span class="types">散文札记</span></p>
                             </div>
-                            <img src="../res/img/wz_img1.jpg">
-                            <p>@ViewBag.list.Content</p>
+                            <img src="../res/img/@ViewBag.list.Picture">
+                            <p>@Html.Raw(ViewBag.list.Content)</p>
                         </div>
                         <div class="form">
                             <form class="layui-form" id="form-Comment">
                                 <div class="layui-form-item layui-form-text">
                                     <div class="layui-input-block">
-                                        <textarea name="desc" placeholder="既然来了，就说几句" class="layui-textarea" style="max-width:none" id="textarea-comment"></textarea>
+                                        <input type="hidden" name="uId" id="uId" value="@Session["UserID"]" />
+                                        <input type="hidden" name="DynamicId" value="@ViewBag.list.DynamicId" id="DynamicId" />
+                                        <textarea name="textareacomment" placeholder="既然来了，就说几句" class="layui-textarea" style="max-width:none" id="textareacomment"></textarea>
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <div class="layui-input-block" style="text-align: right;">
-                                        <button class="layui-btn definite" id="submit">確定</button>
+                                        <input type="button" class="layui-btn definite" id="submit" value="確定" onclick="AddComment()" />
                                     </div>
                                 </div>
                             </form>
@@ -47,21 +50,21 @@
                                     <p class="tit"><span class="name">@item.UserInfo.UserName</span><span class="data">@item.CommentTime</span></p>
                                     <p class="ct">@item.CommentContent</p>
                                 </div>
-                                <div>
+                                @*<div>
                                     <a>点赞</a>
                                     <a class="layui-upload-button" onclick="returnComm()">回复</a>
-                                </div>
+                                </div>*@
                             </div>
                         }
                     </div>
-                    </div>
+                </div>
             </div>
         </div>
-        <div id="demo" style="text-align: center;"></div>
+        @*<div id="demo" style="text-align: center;"></div>*@
     </div>
 </div>
 @section scripts{
-    <script>
+    @*<script>
         var userId = Session["UserID"];
 
         function returnComm() {
@@ -76,27 +79,34 @@
                 content:''
             });
         }
-    </script>
+    </script>*@
     <script type="text/javascript">
-        $("#form-Comment").bind("submit",function () {
-            var userId = Session["UserID"];
-            var CommentContent = $("#textarea-comment").val();
-            $.ajax({
-                type: "post",
+        layui.use('element', function(){
+              var element = layui.element;
+  
+              //获取hash来切换选项卡，假设当前地址的hash为lay-id对应的值
+              var layid = location.hash.replace(/^#test1=/, '');
+              element.tabChange('test1', layid); 
+  
+              //监听Tab切换，以改变地址hash值
+              element.on('tab(test1)', function(){
+                location.hash = 'test1='+ this.getAttribute('lay-id');
+              });
+        });
+        function AddComment() {
+           $.ajax({
                 url: "/Dynamic/Comment",
-                data: {
-                    CommentContent:CommentContent,
-                    UserId: userId,
-                    DynamicId;@ViewBag.list.DynamicId
-                },
-                success: function () {
-                    lert("评论成功")
+                async: false,
+                type: "post",
+                dataType: "json",
+                data: $("#form-Comment").serialize(),
+                success: function (result) {
+                    location.reload(true);
                 },
                 error: function () {
-                    alert("评论失败")
+                    alert("请求失败")
                 }
             })
-
-        })
+        };
     </script>
     }

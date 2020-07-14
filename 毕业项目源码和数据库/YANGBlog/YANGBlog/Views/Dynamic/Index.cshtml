@@ -7,12 +7,12 @@
 <div class="banner">
     <div class="cont w1000">
         <div class="title">
-            <h3>MY<br />BLOG</h3>
+            <h3>YANG<br />BLOG</h3>
             <h4>well-balanced heart</h4>
         </div>
         <div class="amount">
-            <p><span class="text">访问量</span><span class="access">1000</span></p>
-            <p><span class="text">日志</span><span class="daily-record">1000</span></p>
+            @*<p><span class="text">访问量</span><span class="access">1000</span></p>
+            <p><span class="text">日志</span><span class="daily-record">1000</span></p>*@
         </div>
     </div>
 </div>
@@ -20,10 +20,12 @@
 <div class="content">
     <div class="cont w1000">
         <div class="title">
-            <span class="layui-breadcrumb" lay-separator="|">
-                <a href="javascript:;" >文章列表</a>
-               
-            </span>
+                <span class="layui-breadcrumb" lay-separator="|">
+                    <a href="javascript:;">文章列表</a>
+                </span>
+        </div>
+        <div style="margin-bottom:50px;">
+            <a class="layui-btn" href="/Dynamic/Write">写文章</a>
         </div>
         <div class="list-item">
             @foreach (var item in Model)
@@ -32,7 +34,7 @@
                     <div class="layui-fluid">
                         <div class="layui-row">
                             <div class="layui-col-xs12 layui-col-sm4 layui-col-md5">
-                                <div class="img"><img src="../res/img/sy_img1.jpg" alt=""></div>
+                                <div class="img"><img src="../res/img/@item.Picture" alt=""></div>
                             </div>
                             <div class="layui-col-xs12 layui-col-sm8 layui-col-md7">
                                 <div class="item-cont">
@@ -47,7 +49,7 @@
                 </div>
             }
         </div>
-        <div id="demo" style="text-align: center;"></div>
+        @*<div id="demo" style="text-align: center;"></div>*@
     </div>
 </div>
 

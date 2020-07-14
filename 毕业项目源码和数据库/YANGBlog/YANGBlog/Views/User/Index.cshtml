@@ -3,7 +3,10 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/YANG-Blog.cshtml";
 }
-
+@using YANGBlog.Models
+@{ 
+    UserInfo user = ViewBag.UserInfo;
+}
 
 <div class="about-content">
     <div class="w1000">
@@ -12,18 +15,18 @@
                 <h3>我的介绍</h3>
             </div>
             <div class="cont">
-                <img src="../res/img/xc_img1.jpg">
+                <img src="../res/img/@user.HeadPortrait">
                 <div class="per-info">
                     <p>
-                        <span class="name">小明</span><br />
-                        <span class="age">24岁</span><br />
-                        <span class="Career">设计师, 前端工程师</span><br />
-                        <span class="interest">爱好旅游,打游戏</span>
+                        <span class="name">@user.UserName</span><br />
+                        <span class="age"> @user.Age 岁</span><br />
+                        <span class="birthday" id="birthday">@user.Birthday</span><br />
+                        <span class="Career">@user.Occupation</span><br />
                     </p>
                 </div>
             </div>
         </div>
-        <div class="item tool">
+        @*<div class="item tool">
             <div class="title">
                 <h3>我的技能</h3>
             </div>
@@ -55,7 +58,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>*@
         <div class="item contact">
             <div class="title">
                 <h3>联系方式</h3>
@@ -63,9 +66,9 @@
             <div class="cont">
                 <img src="../res/img/erweima.jpg">
                 <div class="text">
-                    <p class="WeChat">微信：<span>1234567890</span></p>
-                    <p class="qq">qq：<span>123456789</span></p>
-                    <p class="iphone">电话：<span>123456789</span></p>
+                    <p class="WeChat">微信：<span>970764882</span></p>
+                    <p class="qq">qq：<span>970764882</span></p>
+                    <p class="iphone">电话：<span>@user.Phone</span></p>
                 </div>
             </div>
         </div>

@@ -5,53 +5,131 @@
 
 <!DOCTYPE html>
 <link rel="stylesheet" type="text/css" href="../res/layui/css/layui.css">
-<link rel="stylesheet" type="text/css" href="../res/css/main.css">
-<link href="~/Content/login.css" rel="stylesheet" />
+@*<link rel="stylesheet" type="text/css" href="../res/css/main.css">
+    <link href="~/Content/login.css" rel="stylesheet" />*@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Login</title>
+    <style>
+
+        body {
+            background-image: url("../res/img/背景图.png" );
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        #div_from {
+            width: 420px;
+            height: 300px;
+            
+            margin-left: 950px;
+            margin-top: 200px;
+            background-color:white;
+        }
+        #span_name{
+            text-align:center;
+            margin-left:130px;
+            font-size:20px;
+            font-family:'Microsoft YaHei'
+        }
+        input{
+            margin-left:72px;
+            width:270px;
+            height:38px;
+            border-radius:3px;
+            border:0.5px solid gray;
+        }
+        .dic_1{
+            margin-top:50px;
+        }
+        .dic_2{
+            margin-top:13px;
+        }
+        #submit_1{
+            background-color:greenyellow;
+        }
+        
+    </style>
 </head>
 <body>
-    <script src="~/Scripts/login.min.js"></script>
-
-    <div class="page">
-        <div class="container">
-            <div class="left">
-                <div class="login">登录</div>
-                <div class="eula">欢迎使用YANGBlog</div>
+    <div id="div_from">
+        <form action="/User/Login" method="post">
+            <div>
+                <span id="span_name">用户名密码登录</span>
             </div>
-            <div class="right">
-                <svg viewBox="0 0 320 300">
-                    <defs>
-                        <linearGradient inkscape:collect="always"
-                                        id="linearGradient"
-                                        x1="13"
-                                        y1="193.49992"
-                                        x2="307"
-                                        y2="193.49992"
-                                        gradientUnits="userSpaceOnUse">
-                            <stop style="stop-color:#ff00ff;"
-                                  offset="0"
-                                  id="stop876" />
-                            <stop style="stop-color:#ff0000;"
-                                  offset="1"
-                                  id="stop878" />
-                        </linearGradient>
-                    </defs>
-                    <path d="m 40,120.00016 239.99984,-3.2e-4 c 0,0 24.99263,0.79932 25.00016,35.00016 0.008,34.20084 -25.00016,35 -25.00016,35 h -239.99984 c 0,-0.0205 -25,4.01348 -25,38.5 0,34.48652 25,38.5 25,38.5 h 215 c 0,0 20,-0.99604 20,-25 0,-24.00396 -20,-25 -20,-25 h -190 c 0,0 -20,1.71033 -20,25 0,24.00396 20,25 20,25 h 168.57143" />
-                </svg>
-                <div class="form" >
-                    <form action="/User/Login" method="post">
-                        <label for="UserName">用户名</label>
-                        <input type="text" id="UserName" name="UserName">
-                        <label for="password">密码</label>
-                        <input type="password" id="Password" name="PassWord">
-                        <input type="submit" id="submit" value="提交">
-                    </form>
+
+            <div class="dic_1">
+                <input type="text" placeholder="  用户名登录" id="UserName" name="UserName" />
+            </div>
+            <div class="dic_2">
+                <input type="password"  placeholder="  密码" id="Password" name="PassWord" />
+            </div>
+            <div class="dic_2">
+                <input id="submit_1" type="submit" value="登 录" />
+            </div>
+            <div style="margin-top:60px">
+                <a href="/User/Register" style="margin-left:300px">注册新账号</a>
+            </div>
+        </form>
+        
+    </div>
+
+    @*<script src="~/Scripts/login.min.js"></script>
+
+        <div class="page">
+            <div class="container">
+                <div class="left">
+                    <div class="login">登录</div>
+                    <div class="eula">欢迎使用YANGBlog</div>
+                </div>
+                <div class="right">
+                    <svg viewBox="0 0 320 300">
+                        <defs>
+                            <linearGradient inkscape:collect="always"
+                                            id="linearGradient"
+                                            x1="13"
+                                            y1="193.49992"
+                                            x2="307"
+                                            y2="193.49992"
+                                            gradientUnits="userSpaceOnUse">
+                                <stop style="stop-color:#ff00ff;"
+                                      offset="0"
+                                      id="stop876" />
+                                <stop style="stop-color:#ff0000;"
+                                      offset="1"
+                                      id="stop878" />
+                            </linearGradient>
+                        </defs>
+                        <path d="m 40,120.00016 239.99984,-3.2e-4 c 0,0 24.99263,0.79932 25.00016,35.00016 0.008,34.20084 -25.00016,35 -25.00016,35 h -239.99984 c 0,-0.0205 -25,4.01348 -25,38.5 0,34.48652 25,38.5 25,38.5 h 215 c 0,0 20,-0.99604 20,-25 0,-24.00396 -20,-25 -20,-25 h -190 c 0,0 -20,1.71033 -20,25 0,24.00396 20,25 20,25 h 168.57143" />
+                    </svg>
+                    <div class="form">
+                        <form action="/User/Login" method="post">
+                            <label for="UserName">用户名</label>
+                            <input type="text" id="UserName" name="UserName">
+                            <label for="password">密码</label>
+                            <input type="password" id="Password" name="PassWord">
+                            <input type="submit" id="submit" value="提交">
+                        </form>
+                    </div>
+
                 </div>
             </div>
-        </div>
-    </div>
+
+        </div>*@
 </body>
 </html>
+@*<script type="text/javascript">
+        function Register() {
+               //alert(1);
+
+                $('#form_2').append(user_1);
+                    layer.open({
+                        type: 1,
+                        area: ['550px', '300px'],
+                        content: $("#form_friend"),
+                        title: ['添加好友', 'font-size:18px;']
+                    });
+
+            }
+    </script>*@
