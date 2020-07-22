@@ -17,7 +17,7 @@
     <AssemblyName>YANGBlog</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44336</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
@@ -745,6 +745,7 @@
     <Content Include="Models\YANGBlog.edmx.diagram">
       <DependentUpon>YANGBlog.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\YANGBlog.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -917,7 +918,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>7902</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44336/</IISUrl>
+          <IISUrl>http://localhost/YANGBlog</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
